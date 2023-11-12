@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "9emtNpafBQHnLDRoxVn5SNhynPvFDCmm+hZ3BPI8hQ47fWkxvHaBH8/KQpgOdveKzsQEq0JwqqpLnDJserABVA==",
+  "dgSpecHash": "DMz3IZ54d5qdsJbYUZJHjQPlEFbgT1K21q9JrsR8+Wwfm6W7ZqexygkmHKFa1fYD2FEeD7/aBte3r0vDRckNjg==",
   "success": true,
   "projectFilePath": "C:\\Users\\jorda\\source\\repos\\TaxiServiceWPF\\Kursova_TaxiServiceWPF\\Kursova_TaxiServiceWPF\\Kursova_TaxiServiceWPF.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\jorda\\.nuget\\packages\\mahapps.metro.iconpacks.material\\4.11.0\\mahapps.metro.iconpacks.material.4.11.0.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -4,6 +4,13 @@
              xmlns:local="clr-namespace:Kursova_TaxiServiceWPF"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/StyleOfButton.xaml"/>
+                <ResourceDictionary Source="Styles/RadioButton.xaml"/>
+                <ResourceDictionary Source="Themes/LightTheme.xaml"/>
+                <ResourceDictionary Source="Assets/Icons/Icons.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
