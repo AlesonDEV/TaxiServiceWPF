@@ -7,49 +7,44 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Analytics" FontFamily="Poppins">
-
-    <Border CornerRadius="0 20 20 0" Background="{DynamicResource SecundaryBackgroundColor}">
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </Page.Resources>
+    
+    <Border CornerRadius="0 20 20 0" Background="Transparent" Margin="20 0 20 0">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
+                <RowDefinition Height="120"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
-
+            
             <DataGrid Style="{DynamicResource DataGridStyle1}" 
                       CellStyle="{DynamicResource DataGridCellStyle1}" 
                       ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" 
                       RowStyle="{DynamicResource DataGridRowStyle1}"  Grid.Row="1"
                       x:Name="membersOfDataGrid"
-                      Margin="20 0 20 0">
+                      Margin="30 0 30 0">
                 <DataGrid.Columns>
-                    <DataGridCheckBoxColumn CanUserResize="False" Width="auto">
-                        <DataGridCheckBoxColumn.HeaderTemplate>
-                            <DataTemplate>
-                                <CheckBox/>
-                            </DataTemplate>
-                        </DataGridCheckBoxColumn.HeaderTemplate>
-                    </DataGridCheckBoxColumn>
-
-                    <DataGridTemplateColumn Header="№ Car" IsReadOnly="True" CanUserResize="False" Width="*" >
+                    <DataGridTextColumn Header="# Car" IsReadOnly="True" Width="70" Binding="{Binding Number}"/>
+                    <DataGridTemplateColumn Header="Surname" IsReadOnly="True" CanUserResize="False" Width="120">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
                                     <Border Width="25" Height="25" CornerRadius="50"
                                             Margin="0 0 10 0" Background="{Binding bgColor}">
-                                        <TextBlock Text="///" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Margin="0 0 0 1"/>
                                     </Border>
-                                    <TextBlock Text="{Binding Number}" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Surname}" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTextColumn Header="Surname" IsReadOnly="True" Width="*" Binding="{Binding Surname}"/>
-                    <DataGridTextColumn Header="Kilometr's cost" IsReadOnly="True" Width="*" Binding="{Binding PricePerKilometr}"/>
-                    <DataGridTextColumn Header="Car's price" IsReadOnly="True" Width="*" Binding="{Binding PriceOfCar}"/>
-                    <DataGridTextColumn Header="Car's model" IsReadOnly="True" Width="*" Binding="{Binding ModelOfCar}"/>
-                    <DataGridTextColumn Header="Arrival time" IsReadOnly="True" Width="*" Binding="{Binding ArrivalTime}"/>
-                    <DataGridTextColumn Header="Distance" IsReadOnly="True" Width="*" Binding="{Binding Distance}"/>
+                    
+                    <DataGridTextColumn Header="Km price" IsReadOnly="True" Width="100" Binding="{Binding PricePerKilometr}"/>
+                    <DataGridTextColumn Header="Price" IsReadOnly="True" Width="*" Binding="{Binding PriceOfCar}"/>
+                    <DataGridTextColumn Header="Model" IsReadOnly="True" Width="*" Binding="{Binding ModelOfCar}"/>
+                    <DataGridTextColumn Header="Time" IsReadOnly="True" Width="70" Binding="{Binding ArrivalTime}"/>
+                    <DataGridTextColumn Header="Distance" IsReadOnly="True" Width="90" Binding="{Binding Distance}"/>
 
                     <DataGridTemplateColumn Header="Operations" IsReadOnly="True" CanUserResize="False" Width="*">
                         <DataGridTemplateColumn.CellTemplate>
@@ -68,6 +63,16 @@
 
                 </DataGrid.Columns>
             </DataGrid>
+
+            <Grid Width="200" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 10 10">
+                
+                <TextBlock Margin="20 0" VerticalAlignment="Center" Foreground="#b0b9c6" IsHitTestVisible="False"
+                           Panel.ZIndex="1" Text="Search here ..."
+                           Visibility="{Binding ElementName=txtSearch,Path=Text.IsEmpty,Converter={StaticResource BoolToVis}}"/>
+                <TextBox x:Name="txtSearch" Style="{StaticResource TextBoxSearch}" VerticalAlignment="Center" TextAlignment="Left" />
+                <Icon:PackIconMaterial Kind="Magnify" Width="15" Height="15" VerticalAlignment="Center"
+                                       Margin="0 0 15 0" Foreground="#b0b9c6" HorizontalAlignment="Right"/>
+            </Grid>
             
             <Border Grid.Row="2" HorizontalAlignment="Right" BorderBrush="#dee4ec" BorderThickness="1"
                     CornerRadius="10" Padding="5" Background="{DynamicResource ButtonBackgroundColorIsMouseOver}" Margin="0 0 20 10">
