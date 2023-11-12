@@ -10,6 +10,10 @@
                 <ResourceDictionary Source="Styles/RadioButton.xaml"/>
                 <ResourceDictionary Source="Themes/LightTheme.xaml"/>
                 <ResourceDictionary Source="Assets/Icons/Icons.xaml"/>
+                <ResourceDictionary Source="DataGridStyles/RowStyle.xaml"/>
+                <ResourceDictionary Source="DataGridStyles/ColumnHeaderStyle.xaml"/>
+                <ResourceDictionary Source="DataGridStyles/CellStyle.xaml"/>
+                <ResourceDictionary Source="DataGridStyles/DataGridStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

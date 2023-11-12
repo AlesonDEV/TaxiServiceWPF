@@ -10,7 +10,13 @@
     <Page Update="Assets\Icons\Icons.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="DataGridStyles\ColumnStyle.xaml">
+    <Page Update="DataGridStyles\CellStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="DataGridStyles\ColumnHeaderStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="DataGridStyles\DataGridStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="DataGridStyles\RowStyle.xaml">

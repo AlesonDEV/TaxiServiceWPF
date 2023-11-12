@@ -13,6 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Kursova_TaxiServiceWPF.Pages;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Collections.ObjectModel;
+
 
 namespace Kursova_TaxiServiceWPF
 {
@@ -43,4 +47,6 @@ namespace Kursova_TaxiServiceWPF
 
         }
     }
+
+   
 }
