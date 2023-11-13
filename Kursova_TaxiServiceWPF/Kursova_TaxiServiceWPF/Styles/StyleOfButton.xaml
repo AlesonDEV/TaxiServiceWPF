@@ -78,9 +78,8 @@
     </Style>
 
     <Style x:Key="gridEditButton" TargetType="{x:Type Button}">
-        <Setter Property="Background" Value="{DynamicResource BackgroundColorForLeftMenu}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryYellowColor}"/>
-        <Setter Property="Foreground" Value="{DynamicResource SecundaryBlueColor}"/>
+        <Setter Property="Background" Value="#A8C2FB"/>
+        <Setter Property="Foreground" Value="#5B80D0"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="BorderThickness" Value="0"/>
@@ -88,7 +87,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Name="bd" CornerRadius="5" Background="{TemplateBinding Background}" BorderThickness="1" Padding="5" BorderBrush="{TemplateBinding BorderBrush}">
+                    <Border Name="bd" CornerRadius="5" Background="{TemplateBinding Background}" BorderThickness="0" Padding="5" BorderBrush="{TemplateBinding BorderBrush}">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                 </ControlTemplate>
@@ -97,19 +96,19 @@
 
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="Red"/>
+                <Setter Property="Background" Value="#5A67CE"/>
+                <Setter Property="Foreground" Value="#D0DFFF"/>
             </Trigger>
         </Style.Triggers>
     </Style>
 
     <Style x:Key="gridRemove Button" TargetType="{x:Type Button}" BasedOn="{StaticResource gridEditButton}">
-        <Setter Property="Background" Value="{DynamicResource BackgroundColorForLeftMenu}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryYellowColor}"/>
-        <Setter Property="Foreground" Value="{DynamicResource SecundaryBlueColor}"/>
-
+        <Setter Property="Background" Value="#A8C2FB"/>
+        <Setter Property="Foreground" Value="#5B80D0"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="Red"/>
+                <Setter Property="Background" Value="#6877EE"/>
+                <Setter Property="Foreground" Value="#D0DFFF"/>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -121,8 +120,8 @@
     </Style>
 
     <Style TargetType="TextBox" x:Key="TextBoxSearch">
-        <Setter Property="Background" Value="#ffffff"/>
-        <Setter Property="Foreground" Value="#b0b9c6"/>
+        <Setter Property="Background" Value="#C1D4FB"/>
+        <Setter Property="Foreground" Value="#244E91"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="FontSize" Value="12"/>
         <Setter Property="Padding" Value="0"/>
@@ -132,9 +131,12 @@
             <Setter.Value>
                 <ControlTemplate TargetType="TextBoxBase">
                     <Border x:Name="border" CornerRadius="15" Background="{TemplateBinding Background}" SnapsToDevicePixels="True"
-                            BorderThickness="1" BorderBrush="#e0e6ed" Height="30">
+                            BorderThickness="0" Height="30">
+                        <Border.Effect>
+                            <DropShadowEffect Color="#93B0EF" Direction="270" ShadowDepth="0.5" BlurRadius="6"/>
+                        </Border.Effect>
                         <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden"
-                                      VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Left" Margin="15 7 0 0" Width="140"/>
+                                      VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Left" Margin="17 7 0 0" Width="140"/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -142,13 +144,45 @@
                         </Trigger>
 
                         <Trigger Property="IsKeyboardFocused" Value="True">
-                            <Setter Property="BorderBrush" Value="#d9d9d9" TargetName="border"/>
+                            <Setter Property="BorderBrush" Value="#244E91" TargetName="border"/>
                             <Setter Property="VerticalAlignment" Value="Center"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <Style x:Key="pagingButton" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextLightThemeColor}"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="Height" Value="17"/>
+        <Setter Property="Margin" Value="2 0 "/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="3" Padding="5 0">
+                        
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 0"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource TextLightThemeColor}"/>
+                <Setter Property="Foreground" Value="White"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="pagingButtonIcon" TargetType="Icon:PackIconMaterial">
+        <Setter Property="Width" Value="10"/>
+        <Setter Property="Height" Value="10"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
     
 </ResourceDictionary>
