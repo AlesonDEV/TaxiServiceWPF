@@ -32,8 +32,8 @@
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="BorderBrush" Value="#006262" TargetName="splitBorder"/>
-                <Setter Property="Fill" Value="#50C878" TargetName="Arrow"/>
+                <Setter Property="BorderBrush" Value="#6B82AD" TargetName="splitBorder"/>
+                <Setter Property="Fill" Value="#6B82AD" TargetName="Arrow"/>
             </Trigger>
             <Trigger Property="IsKeyboardFocused" Value="True">
                 <Setter Property="BorderBrush" Value="#006262" TargetName="splitBorder"/>
@@ -53,7 +53,7 @@
         <Setter Property="Height" Value="30"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="FontSize" Value="11"/>
-        <Setter Property="Foreground" Value="Red"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextLightThemeColor}"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="Margin" Value="0 10 0 0"/>
         <Setter Property="Template">
@@ -94,7 +94,8 @@
                                               SnapsToDevicePixels="True"
                                               OverridesDefaultStyle="True"
                                               Foreground="Teal"
-                                              FontSize="11"/>
+                                              FontSize="11"
+                                              />
                                 <StackPanel IsItemsHost="True"
                                             KeyboardNavigation.DirectionalNavigation="Contained">
 

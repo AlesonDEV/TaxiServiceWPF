@@ -12,6 +12,7 @@
     </Page.Resources>
 
     <Border CornerRadius="0 20 20 0" Background="Transparent" Margin="20 0 20 0">
+        
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="80"/>
@@ -23,10 +24,14 @@
                       CellStyle="{DynamicResource DataGridCellStyle1}" 
                       ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" 
                       RowStyle="{DynamicResource DataGridRowStyle1}"  Grid.Row="1"
+                      RowDetailsTemplate="{DynamicResource CustomerDetail}"
+                      MouseDown="membersOfDataGrid_MouseDown"
                       x:Name="membersOfDataGrid"
+                      
                       Margin="20 0 20 0">
+                
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="# Car" IsReadOnly="True" Width="50" Binding="{Binding Number}" />
+                    <DataGridTextColumn Header="# Car" IsReadOnly="True" Width="50" Binding="{Binding ID}" />
                     <DataGridTemplateColumn Header="Surname" IsReadOnly="True" CanUserResize="False" Width="130">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -34,18 +39,18 @@
                                     <Border Width="25" Height="25" CornerRadius="50"
                                             Margin="0 0 10 0" Background="{Binding bgColor}">
                                     </Border>
-                                    <TextBlock Text="{Binding DriverName}" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Surname}" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
 
-                    <DataGridTextColumn Header="Km price" IsReadOnly="True" Width="*" Binding="{Binding PricePerKilometr}"/>
-                    <DataGridTextColumn Header="Price" IsReadOnly="True" Width="*" Binding="{Binding PriceOfCar}"/>
-                    <DataGridTextColumn Header="Model" IsReadOnly="True" Width="*" Binding="{Binding ModelOfCar}"/>
+                    <DataGridTextColumn Header="Km price" IsReadOnly="True" Width="*" Binding="{Binding PricePerKm}"/>
+                    <DataGridTextColumn Header="Price" IsReadOnly="True" Width="*" Binding="{Binding CarPrice}"/>
+                    <DataGridTextColumn Header="Model" IsReadOnly="True" Width="*" Binding="{Binding CarModel}"/>
                     <DataGridTextColumn Header="Time" IsReadOnly="True" Width="*" Binding="{Binding ArrivalTime}"/>
                     <DataGridTextColumn Header="Distance" IsReadOnly="True" Width="*" Binding="{Binding Distance}"/>
-
+                    
                     <DataGridTemplateColumn Header="Operations" IsReadOnly="True" CanUserResize="False" Width="*">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -60,14 +65,15 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-
+                
                 </DataGrid.Columns>
+                
             </DataGrid>
 
 
 
             <Grid Grid.Row="0">
-                <Button Style="{StaticResource addButton}" Margin="370 0 0 15">
+                <Button Style="{StaticResource addButton}" Margin="370 0 0 15" Click="Button_Click">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Do action"/>
                     </StackPanel>
@@ -76,10 +82,13 @@
             </Grid>
             
             <Grid Grid.Row="0">
-                <ComboBox Style="{DynamicResource ComboBoxStyle1}" Margin="30 20 0 0" HorizontalAlignment="Left" >
-                    <ComboBoxItem Content="One"/>
-                    <ComboBoxItem Content="Two"/>
-                    <ComboBoxItem Content="Three"/>
+                <ComboBox x:Name="comboBox" Style="{DynamicResource ComboBoxStyle1}" Margin="30 20 0 0" HorizontalAlignment="Left" >
+                    <ComboBoxItem Content="Qiuck Sort" Margin="0 2 3 0"/>
+                    <ComboBoxItem Content="Minimal Arrival Time"/>
+                    <ComboBoxItem Content="Selected car"/>
+                    <ComboBoxItem Content="Most expensive with cheapest"/>
+                    <ComboBoxItem Content="Group rows"/>
+                    <ComboBoxItem Content="Group models and sort"/>
                 </ComboBox>
             </Grid>
            

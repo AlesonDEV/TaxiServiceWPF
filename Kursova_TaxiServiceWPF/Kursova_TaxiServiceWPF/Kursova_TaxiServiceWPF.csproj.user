@@ -25,6 +25,9 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Pages\AddPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Pages\Orders.xaml">
       <SubType>Designer</SubType>
     </Page>

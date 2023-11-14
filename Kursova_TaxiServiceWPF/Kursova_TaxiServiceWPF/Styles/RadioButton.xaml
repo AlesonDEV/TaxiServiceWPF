@@ -25,7 +25,7 @@
                                         CornerRadius="0 10 10 0"
                                         Width="170" HorizontalAlignment="Left">
                                 <Border.Effect>
-                                    <Effects:DropShadowEffect Color="#aec6db" Direction="360" ShadowDepth="2" BlurRadius="10"/>
+                                    <DropShadowEffect Color="#93B0EF" Direction="270" ShadowDepth="0.5" BlurRadius="6"/>
                                 </Border.Effect>
                             </Border>
                             
@@ -38,10 +38,11 @@
                                            Margin="8 0 0 0">
                                 <Rectangle.BitmapEffect>
                                     <DropShadowBitmapEffect
-                                            ShadowDepth="1"
-                                            Direction="360"
+                                            Direction="270" 
+                                            ShadowDepth="0.5" 
+                                            Softness="20"
                                             Color="#A8C2FB"
-                                            Softness="0.4"/>
+                                            />
                                 </Rectangle.BitmapEffect>
                             </Rectangle>
 

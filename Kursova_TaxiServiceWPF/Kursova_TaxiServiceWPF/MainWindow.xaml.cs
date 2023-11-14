@@ -48,6 +48,11 @@ namespace Kursova_TaxiServiceWPF
         {
 
         }
+
+        private void rdAddition_Click(object sender, RoutedEventArgs e)
+        {
+            frameContent.Navigate(new AddPage());
+        }
     }
 
    

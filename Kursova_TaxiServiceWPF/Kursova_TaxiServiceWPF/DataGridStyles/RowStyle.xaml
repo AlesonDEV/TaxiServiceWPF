@@ -44,10 +44,11 @@
                 <Setter Property="Background" Value="#7FA0C6"/>
                 <Setter Property="Foreground" Value="#ffffff"/>
             </Trigger>
-            
+
             <Trigger Property="IsSelected" Value="True">
                 <Setter Property="Background" Value="#7FA0C6"/>
                 <Setter Property="Foreground" Value="#ffffff"/>
+                
             </Trigger>
 
             <MultiTrigger>
@@ -59,5 +60,26 @@
             </MultiTrigger>
         </Style.Triggers>
     </Style>
+
+    <DataTemplate x:Key="CustomerDetail" >
+        <Border BorderThickness="0" Background="BlanchedAlmond" Padding="10" >
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="12" Text="Email: " VerticalAlignment="Center" />
+                    <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding Details}" VerticalAlignment="Center" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="12" Text="Phone: " VerticalAlignment="Center" />
+                    <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding Details}" VerticalAlignment="Center" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="12" Text="Sales Person: " VerticalAlignment="Center" />
+                    <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding Details}" VerticalAlignment="Center" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </DataTemplate>
     
+
+
 </ResourceDictionary>

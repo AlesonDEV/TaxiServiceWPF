@@ -20,41 +20,77 @@ using System.Text.RegularExpressions;
 
 namespace Kursova_TaxiServiceWPF.Pages
 {
+    
     public partial class Orders : Page
     {
-        private ObservableCollection<Taxi> membersArray = new ObservableCollection<Taxi>(); //members of dataGrid
-        private Taxi[] ddd;
-        private int indx;
+        private ObservableCollection<Taxi> membersArray; //members of dataGrid
+        private ArrayOfTaxi taxisArray; //class for actions on data grid inforamtion
         public Orders()
         {
             InitializeComponent();
-            Random rand = new Random();
-            string[] Surname = { "Yaroshovych", "Bodnar", "Vashchuk", "Lukianov" };
-            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
-            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
-            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
-            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
-            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
-            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
-            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
-            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
-            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
-            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
-            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
-            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
-            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
-            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
-            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
-            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
-            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
-            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
-            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
-            membersOfDataGrid.ItemsSource = membersArray;
+            membersArray = new ObservableCollection<Taxi>();
+            taxisArray = new ArrayOfTaxi();
+            for (int i = 0; i < 20; i++)
+            {
+                taxisArray.AddTaxi(new Taxi { ID = i, Surname = "Lukianov", ArrivalTime = DateTime.Now, CarCost = 323, CarModel = "dsfds", Distance = 232, PricePerKm = 232 });
+            }
+            taxisArray.AddTaxi(new Taxi { ID = 1, Surname = "tk", ArrivalTime = DateTime.Now, CarCost = 323, CarModel = "dsfds", Distance = 1, PricePerKm = 1, Details = "Hiiiiidsvsdvsdvjksndjkvnsdjkvnkjsdnv" });
+            taxisArray.AddTaxi(new Taxi { ID = 3, Surname = "B", ArrivalTime = DateTime.Now, CarCost = 323, CarModel = "dsfds", Distance = 3, PricePerKm = 1 });
+            for (int i = 0; i < taxisArray.GetCount(); i++)
+            {
+                membersOfDataGrid.Items.Add(taxisArray.PeekByIndex(i));
+            }
+            
         }
 
         //button functionality and more
-        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        private void DisplayChanges()
         {
+            membersOfDataGrid.Items.Clear();
+            for (int i = 0; i < taxisArray.GetCount(); i++)
+                membersOfDataGrid.Items.Add(taxisArray.PeekByIndex(i));
+        }
+
+        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        { 
+            membersOfDataGrid.Items.Clear();
+            for (int i = 0; i < taxisArray.GetCount(); i++) {
+                Taxi tempTaxi = taxisArray.PeekByIndex(i);
+                if (tempTaxi.Surname.Contains(txtSearch.Text))
+                    membersOfDataGrid.Items.Add(tempTaxi);
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            System.Int32 indexOfSelected = comboBox.SelectedIndex;
+            switch (indexOfSelected)
+            {
+                case 0:
+                    taxisArray.QuickSortByPrice();
+                    DisplayChanges();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void DataGridRow_MouseDown(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        
+
+        private void membersOfDataGrid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DataGridRow row = ItemsControl.ContainerFromElement((DataGrid)sender, e.OriginalSource as DependencyObject) as DataGridRow;
+
+            if (row != null)
+            {
+                // Unselect the row to hide details
+                row.IsSelected = !row.IsSelected;
+            }
         }
     }
 }

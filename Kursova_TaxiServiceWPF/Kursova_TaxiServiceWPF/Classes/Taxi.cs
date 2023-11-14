@@ -25,17 +25,17 @@ namespace Kursova_TaxiServiceWPF.Classes
             }
         }
 
-        //Driver's Name + setter and getter
-        private string strDriverName;
-        public string DriverName
+        //Driver's SurName + setter and getter
+        private string strDriverSurname;
+        public string Surname
         {
-            get { return strDriverName; }
+            get { return strDriverSurname; }
             set {
                 if (value == null) {
-                    strDriverName = " ";
+                    strDriverSurname = " ";
                     return;
                 }
-                strDriverName = value; 
+                strDriverSurname = value; 
             }
         }
 
@@ -52,6 +52,9 @@ namespace Kursova_TaxiServiceWPF.Classes
                 dPricePerKm = 0.01d;
             }
         }
+
+        public string Details { get; set; }
+        public string Is { get; set; }
 
         //Car's cost + setter and getter
         private double dCarCost;
@@ -93,6 +96,7 @@ namespace Kursova_TaxiServiceWPF.Classes
 
         //Distance Time + setter and getter
         private double dDistance;
+       
         public double Distance
         {
             get { return dDistance; }
@@ -104,11 +108,12 @@ namespace Kursova_TaxiServiceWPF.Classes
                 dDistance = 0.01d;
             }
         }
+        
 
         //Constructors
         public Taxi() {
             ID = 0;
-            DriverName = " ";
+            Surname = " ";
             PricePerKm = 0.0d;
             CarCost = 0.0d;
             CarModel = " ";
@@ -117,14 +122,14 @@ namespace Kursova_TaxiServiceWPF.Classes
         }
 
         public Taxi(int IdOfCar,
-            string strDriverName,
+            string strDriverSurname,
             double dPricePerKm,
             double dCarCost,
             string strCarModel,
             DateTime dArrivalTime,
             double dDistance) {
             ID = IdOfCar;
-            DriverName = strDriverName;
+            Surname = strDriverSurname;
             PricePerKm = dPricePerKm;
             CarCost = dCarCost;
             CarModel = strCarModel;
@@ -134,12 +139,16 @@ namespace Kursova_TaxiServiceWPF.Classes
 
         public Taxi(Taxi other) {
             ID = other.IdOfCar;
-            DriverName = other.DriverName;
+            Surname = other.Surname;
             PricePerKm = other.dPricePerKm;
             CarCost = other.CarCost;
             CarModel = other.CarModel;
             ArrivalTime = other.ArrivalTime;
             Distance = other.Distance;
+        }
+
+        public System.Double GetPriceOfAllDistance() {
+            return PricePerKm * Distance;
         }
     }
 }

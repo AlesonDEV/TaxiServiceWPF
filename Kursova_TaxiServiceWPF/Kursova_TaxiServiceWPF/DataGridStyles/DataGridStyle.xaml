@@ -95,7 +95,9 @@
                 </MultiTrigger.Conditions>
                 <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
             </MultiTrigger>
+            
         </Style.Triggers>
+        
     </Style>
     
 </ResourceDictionary>
