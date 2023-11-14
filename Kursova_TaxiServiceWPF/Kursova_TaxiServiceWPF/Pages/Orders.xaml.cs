@@ -16,52 +16,45 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Collections.ObjectModel;
 using Kursova_TaxiServiceWPF.Classes;
+using System.Text.RegularExpressions;
 
 namespace Kursova_TaxiServiceWPF.Pages
 {
     public partial class Orders : Page
     {
-        TechnicalСlass technicalСlass;
-        ObservableCollection<MemberOfRowTemplate> members;
+        private ObservableCollection<Taxi> membersArray = new ObservableCollection<Taxi>(); //members of dataGrid
+        private Taxi[] ddd;
+        private int indx;
         public Orders()
         {
             InitializeComponent();
-
-            var convertor = new BrushConverter();
-            members = new ObservableCollection<MemberOfRowTemplate>();
-            technicalСlass = new TechnicalСlass(20);
-
-
-            members.Add(new MemberOfRowTemplate { Number = "0", Surname = "Lukianov", PricePerKilometr = "20", PriceOfCar = "56464", ModelOfCar = "Renault", ArrivalTime = "43343", Distance = "12123", bgColor = (Brush)convertor.ConvertFromString("#1098ad") });
-            members.Add(new MemberOfRowTemplate { Number = "1", Surname = "Lukianov", PricePerKilometr = "20", PriceOfCar = "56464", ModelOfCar = "Renault", ArrivalTime = "43343", Distance = "12123", bgColor = (Brush)convertor.ConvertFromString("#1098ad") });
-            members.Add(new MemberOfRowTemplate { Number = "2", Surname = "Lukianov", PricePerKilometr = "20", PriceOfCar = "56464", ModelOfCar = "Renault", ArrivalTime = "43343", Distance = "12123", bgColor = (Brush)convertor.ConvertFromString("#1098ad") });
-            members.Add(new MemberOfRowTemplate { Number = "3", Surname = "Lukianov", PricePerKilometr = "20", PriceOfCar = "56464", ModelOfCar = "Renault", ArrivalTime = "43343", Distance = "12123", bgColor = (Brush)convertor.ConvertFromString("#1098ad") });
-            members.Add(new MemberOfRowTemplate { Number = "4", Surname = "Lukianov", PricePerKilometr = "20", PriceOfCar = "56464", ModelOfCar = "Renault", ArrivalTime = "43343", Distance = "12123", bgColor = (Brush)convertor.ConvertFromString("#1098ad") });
-            members.Add(new MemberOfRowTemplate { Number = "4", Surname = "Lukianov", PricePerKilometr = "20", PriceOfCar = "56464", ModelOfCar = "Renault", ArrivalTime = "43343", Distance = "12123", bgColor = (Brush)convertor.ConvertFromString("#1098ad") });
-            members.Add(new MemberOfRowTemplate { Number = "4", Surname = "Lukianov", PricePerKilometr = "20", PriceOfCar = "56464", ModelOfCar = "Renault", ArrivalTime = "43343", Distance = "12123", bgColor = (Brush)convertor.ConvertFromString("#1098ad") });
-            members.Add(new MemberOfRowTemplate { Number = "4", Surname = "Lukianov", PricePerKilometr = "20", PriceOfCar = "56464", ModelOfCar = "Renault", ArrivalTime = "43343", Distance = "12123", bgColor = (Brush)convertor.ConvertFromString("#1098ad") });
-            members.Add(new MemberOfRowTemplate { Number = "4", Surname = "Lukianov", PricePerKilometr = "20", PriceOfCar = "56464", ModelOfCar = "Renault", ArrivalTime = "43343", Distance = "12123", bgColor = (Brush)convertor.ConvertFromString("#1098ad") });
-            members.Add(new MemberOfRowTemplate { Number = "4", Surname = "Lukianov", PricePerKilometr = "20", PriceOfCar = "56464", ModelOfCar = "Renault", ArrivalTime = "43343", Distance = "12123", bgColor = (Brush)convertor.ConvertFromString("#1098ad") });
-            members.Add(new MemberOfRowTemplate { Number = "4", Surname = "Lukianov", PricePerKilometr = "20", PriceOfCar = "56464", ModelOfCar = "Renault", ArrivalTime = "43343", Distance = "12123", bgColor = (Brush)convertor.ConvertFromString("#1098ad") });
-            members.Add(new MemberOfRowTemplate { Number = "4", Surname = "Lukianov", PricePerKilometr = "20", PriceOfCar = "56464", ModelOfCar = "Renault", ArrivalTime = "43343", Distance = "12123", bgColor = (Brush)convertor.ConvertFromString("#1098ad") });
-            members.Add(new MemberOfRowTemplate { Number = "4", Surname = "Lukianov", PricePerKilometr = "20", PriceOfCar = "56464", ModelOfCar = "Renault", ArrivalTime = "43343", Distance = "12123", bgColor = (Brush)convertor.ConvertFromString("#1098ad") });
-            members.Add(new MemberOfRowTemplate { Number = "4", Surname = "Lukianov", PricePerKilometr = "20", PriceOfCar = "56464", ModelOfCar = "Renault", ArrivalTime = "43343", Distance = "12123", bgColor = (Brush)convertor.ConvertFromString("#1098ad") });
-            members.Add(new MemberOfRowTemplate { Number = "4", Surname = "Lukianov", PricePerKilometr = "20", PriceOfCar = "56464", ModelOfCar = "Renault", ArrivalTime = "43343", Distance = "12123", bgColor = (Brush)convertor.ConvertFromString("#1098ad") });
-            members.Add(new MemberOfRowTemplate { Number = "4", Surname = "Lukianov", PricePerKilometr = "20", PriceOfCar = "56464", ModelOfCar = "Renault", ArrivalTime = "43343", Distance = "12123", bgColor = (Brush)convertor.ConvertFromString("#1098ad") });
-            members.Add(new MemberOfRowTemplate { Number = "4", Surname = "Lukianov", PricePerKilometr = "20", PriceOfCar = "56464", ModelOfCar = "Renault", ArrivalTime = "43343", Distance = "12123", bgColor = (Brush)convertor.ConvertFromString("#1098ad") });
-            members.Add(new MemberOfRowTemplate { Number = "4", Surname = "Lukianov", PricePerKilometr = "20", PriceOfCar = "56464", ModelOfCar = "Renault", ArrivalTime = "43343", Distance = "12123", bgColor = (Brush)convertor.ConvertFromString("#1098ad") });
-            members.Add(new MemberOfRowTemplate { Number = "4", Surname = "Lukianov", PricePerKilometr = "20", PriceOfCar = "56464", ModelOfCar = "Renault", ArrivalTime = "43343", Distance = "12123", bgColor = (Brush)convertor.ConvertFromString("#1098ad") });
-            members.Add(new MemberOfRowTemplate { Number = "4", Surname = "Lukianov", PricePerKilometr = "20", PriceOfCar = "56464", ModelOfCar = "Renault", ArrivalTime = "43343", Distance = "12123", bgColor = (Brush)convertor.ConvertFromString("#1098ad") });
-            members.Add(new MemberOfRowTemplate { Number = "4", Surname = "Lukianov", PricePerKilometr = "20", PriceOfCar = "56464", ModelOfCar = "Renault", ArrivalTime = "43343", Distance = "12123", bgColor = (Brush)convertor.ConvertFromString("#1098ad") });
-
-            membersOfDataGrid.ItemsSource = members;
+            Random rand = new Random();
+            string[] Surname = { "Yaroshovych", "Bodnar", "Vashchuk", "Lukianov" };
+            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
+            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
+            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
+            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
+            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
+            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
+            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
+            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
+            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
+            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
+            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
+            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
+            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
+            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
+            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
+            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
+            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
+            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
+            membersArray.Add(new Taxi { ID = 1, DriverName = Surname[rand.Next(0, 4)], PricePerKm = 4343, ArrivalTime = DateTime.Now, CarCost = 3443, CarModel = "dfsdfs", Distance = 23 });
+            membersOfDataGrid.ItemsSource = membersArray;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        //button functionality and more
+        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //Taxi taxi = new Taxi(1, "dfsdfds", 423, 434, "Dfssf", DateTime.Now, 423);
-            //technicalСlass.AddTaxi(taxi);
-            //members.Add(taxi);
         }
     }
 }

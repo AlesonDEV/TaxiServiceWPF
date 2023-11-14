@@ -10,7 +10,7 @@
     <Page.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
     </Page.Resources>
-    
+
     <Border CornerRadius="0 20 20 0" Background="Transparent" Margin="20 0 20 0">
         <Grid>
             <Grid.RowDefinitions>
@@ -18,7 +18,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
-            
+
             <DataGrid Style="{DynamicResource DataGridStyle1}" 
                       CellStyle="{DynamicResource DataGridCellStyle1}" 
                       ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" 
@@ -26,7 +26,7 @@
                       x:Name="membersOfDataGrid"
                       Margin="20 0 20 0">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="# Car" IsReadOnly="True" Width="50" Binding="{Binding Number}"/>
+                    <DataGridTextColumn Header="# Car" IsReadOnly="True" Width="50" Binding="{Binding Number}" />
                     <DataGridTemplateColumn Header="Surname" IsReadOnly="True" CanUserResize="False" Width="130">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -34,7 +34,7 @@
                                     <Border Width="25" Height="25" CornerRadius="50"
                                             Margin="0 0 10 0" Background="{Binding bgColor}">
                                     </Border>
-                                    <TextBlock Text="{Binding Surname}" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding DriverName}" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -64,16 +64,36 @@
                 </DataGrid.Columns>
             </DataGrid>
 
-            <Grid Width="200" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 30 13">
+
+
+            <Grid Grid.Row="0">
+                <Button Style="{StaticResource addButton}" Margin="370 0 0 15">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Do action"/>
+                    </StackPanel>
+                </Button>
+
+            </Grid>
+            
+            <Grid Grid.Row="0">
+                <ComboBox Style="{DynamicResource ComboBoxStyle1}" Margin="30 20 0 0" HorizontalAlignment="Left" >
+                    <ComboBoxItem Content="One"/>
+                    <ComboBoxItem Content="Two"/>
+                    <ComboBoxItem Content="Three"/>
+                </ComboBox>
+            </Grid>
+           
+
+            <Grid Width="200" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 30 15" Grid.Row="0">
 
                 <TextBlock Margin="20 0" VerticalAlignment="Center" Foreground="{DynamicResource TextLightThemeColor}" IsHitTestVisible="False"
                            Panel.ZIndex="1" Text="Search here ..."
                            Visibility="{Binding ElementName=txtSearch,Path=Text.IsEmpty,Converter={StaticResource BoolToVis}}"/>
-                <TextBox x:Name="txtSearch" Style="{StaticResource TextBoxSearch}" VerticalAlignment="Center" TextAlignment="Left" />
+                <TextBox x:Name="txtSearch" Style="{StaticResource TextBoxSearch}" VerticalAlignment="Center" TextAlignment="Left" TextChanged="txtSearch_TextChanged" />
                 <Icon:PackIconMaterial Kind="Magnify" Width="15" Height="15" VerticalAlignment="Center"
                                        Margin="0 0 15 0" Foreground="{DynamicResource TextLightThemeColor}" HorizontalAlignment="Right"/>
             </Grid>
-            
+
             <Border Grid.Row="2" HorizontalAlignment="Right" BorderThickness="1"
                     CornerRadius="5" Padding="5 4" Background="#C1D4FB" Margin="0 0 30 0" Height="30">
                 <Border.Effect>
