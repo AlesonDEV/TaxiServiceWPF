@@ -20,9 +20,12 @@
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
+            
+            
+            
             <Border CornerRadius="0 70 0 20"
                     Background="#D0DFFF" Margin="0 80 0 0">
+                
                 <Border.Effect>
                     <Effects:DropShadowEffect Color="#9CB6F3" Direction="270" ShadowDepth="1" BlurRadius="15"/>
                 </Border.Effect>
@@ -36,10 +39,16 @@
                     <!--<Border Grid.Row="0" Background="#A6C8E6" CornerRadius="20 0 0 0">
 
                     </Border>-->
-                    <StackPanel Grid.Row="1" Orientation="Horizontal">
-                        <Image Source="Assets/Icons/logo.png" Stretch="Fill" Height="55" Width="55" VerticalAlignment="Center" Margin="-20 0 0 20"/>
-                        <Label Content="TaxiService" Foreground="{DynamicResource SecundaryBlueColor}" FontWeight="Bold" FontSize="22" VerticalAlignment="Center" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="3 0 0 20"/>
-                    </StackPanel>
+
+                    <Border Grid.Row="1">
+                        <StackPanel Grid.Row="1" Orientation="Horizontal">
+                            <!--<Image Source="Assets/Icons/logo.png" Stretch="Fill" Height="55" Width="55" VerticalAlignment="Center" Margin="-20 0 0 20"/>-->
+                            <Label Content="TaxiService" Foreground="#98B0F1" FontWeight="Bold" FontSize="29" VerticalAlignment="Center" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="13 0 0 20"/>
+                        </StackPanel>
+                        <Border.Effect>
+                            <DropShadowEffect Color="#6E8FEA" Direction="270" ShadowDepth="0.4" BlurRadius="2"/>
+                        </Border.Effect>
+                    </Border>
 
                     <StackPanel Grid.Row="2">
                         <RadioButton x:Name="rdRecords" Content="Home" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource home}" Margin="0 15 0 0" Click="rdRecords_Click" />

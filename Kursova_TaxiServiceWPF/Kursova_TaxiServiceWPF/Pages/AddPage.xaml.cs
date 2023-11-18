@@ -27,6 +27,5 @@ namespace Kursova_TaxiServiceWPF.Pages
         {
             InitializeComponent();
         }
-        
     }
 }

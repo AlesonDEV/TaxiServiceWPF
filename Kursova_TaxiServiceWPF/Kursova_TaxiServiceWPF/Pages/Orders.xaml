@@ -37,7 +37,7 @@
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
                                     <Border Width="25" Height="25" CornerRadius="50"
-                                            Margin="0 0 10 0" Background="{Binding bgColor}">
+                                            Margin="0 0 10 0" Background="AliceBlue">
                                     </Border>
                                     <TextBlock Text="{Binding Surname}" VerticalAlignment="Center"/>
                                 </StackPanel>
@@ -46,7 +46,7 @@
                     </DataGridTemplateColumn>
 
                     <DataGridTextColumn Header="Km price" IsReadOnly="True" Width="*" Binding="{Binding PricePerKm}"/>
-                    <DataGridTextColumn Header="Price" IsReadOnly="True" Width="*" Binding="{Binding CarPrice}"/>
+                    <DataGridTextColumn Header="Price" IsReadOnly="True" Width="*" Binding="{Binding CarCost}"/>
                     <DataGridTextColumn Header="Model" IsReadOnly="True" Width="*" Binding="{Binding CarModel}"/>
                     <DataGridTextColumn Header="Time" IsReadOnly="True" Width="*" Binding="{Binding ArrivalTime}"/>
                     <DataGridTextColumn Header="Distance" IsReadOnly="True" Width="*" Binding="{Binding Distance}"/>

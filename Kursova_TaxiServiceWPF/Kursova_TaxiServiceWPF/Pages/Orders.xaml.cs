@@ -32,15 +32,20 @@ namespace Kursova_TaxiServiceWPF.Pages
             taxisArray = new ArrayOfTaxi();
             for (int i = 0; i < 20; i++)
             {
-                taxisArray.AddTaxi(new Taxi { ID = i, Surname = "Lukianov", ArrivalTime = DateTime.Now, CarCost = 323, CarModel = "dsfds", Distance = 232, PricePerKm = 232 });
-            }
-            taxisArray.AddTaxi(new Taxi { ID = 1, Surname = "tk", ArrivalTime = DateTime.Now, CarCost = 323, CarModel = "dsfds", Distance = 1, PricePerKm = 1, Details = "Hiiiiidsvsdvsdvjksndjkvnsdjkvnkjsdnv" });
-            taxisArray.AddTaxi(new Taxi { ID = 3, Surname = "B", ArrivalTime = DateTime.Now, CarCost = 323, CarModel = "dsfds", Distance = 3, PricePerKm = 1 });
-            for (int i = 0; i < taxisArray.GetCount(); i++)
-            {
-                membersOfDataGrid.Items.Add(taxisArray.PeekByIndex(i));
+                taxisArray.AddTaxi(new Taxi { Id = i, Surname = "Lukianov", ArrivalTime = DateTime.Now, CarCost = 323, CarModel = "dsfds" + i, Distance = 232, PricePerKm = 232 });
             }
             
+            taxisArray.AddTaxi(new Taxi { Id = 1, Surname = "tk", ArrivalTime = DateTime.Now, CarCost = 323, CarModel = "dsfds", Distance = 1, PricePerKm = 1 });
+            for (int i = 0; i < 20; i++)
+            {
+                taxisArray.PeekById(0).Details.Add($"Detail{i + 1} for New Person");
+            }
+            taxisArray.AddTaxi(new Taxi { Id = 3, Surname = "B", ArrivalTime = DateTime.Now, CarCost = 323, CarModel = "dsfds", Distance = 3, PricePerKm = 1 });
+            for (int i = 0; i < taxisArray.GetCount(); i++)
+            {
+                membersOfDataGrid.Items.Add(taxisArray.PeekById(i));
+            }
+
         }
 
         //button functionality and more
@@ -48,16 +53,19 @@ namespace Kursova_TaxiServiceWPF.Pages
         {
             membersOfDataGrid.Items.Clear();
             for (int i = 0; i < taxisArray.GetCount(); i++)
-                membersOfDataGrid.Items.Add(taxisArray.PeekByIndex(i));
+            {
+                membersOfDataGrid.Items.Add(taxisArray.PeekById(i));
+                
+            }
         }
 
         private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
         { 
             membersOfDataGrid.Items.Clear();
             for (int i = 0; i < taxisArray.GetCount(); i++) {
-                Taxi tempTaxi = taxisArray.PeekByIndex(i);
+                Taxi tempTaxi = taxisArray.PeekById(i);
                 if (tempTaxi.Surname.Contains(txtSearch.Text))
-                    membersOfDataGrid.Items.Add(tempTaxi);
+                    membersOfDataGrid.Items.Add(tempTaxi); 
             }
         }
 
@@ -68,11 +76,14 @@ namespace Kursova_TaxiServiceWPF.Pages
             {
                 case 0:
                     taxisArray.QuickSortByPrice();
-                    DisplayChanges();
+                    break;
+                case 1:
+                    Dictionary<string, List<Taxi>> ar = taxisArray.GroupByModel();
                     break;
                 default:
                     break;
             }
+            DisplayChanges();
         }
 
         private void DataGridRow_MouseDown(object sender, RoutedEventArgs e)

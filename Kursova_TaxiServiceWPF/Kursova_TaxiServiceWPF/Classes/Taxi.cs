@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Collections.ObjectModel;
 
 namespace Kursova_TaxiServiceWPF.Classes
 {
     class Taxi
     {
+        #region variables
         //Number Of car + setter and getter
         private int IdOfCar;
-        public int ID
+        public int Id
         {
             get { return IdOfCar; }
             set {
@@ -52,9 +54,6 @@ namespace Kursova_TaxiServiceWPF.Classes
                 dPricePerKm = 0.01d;
             }
         }
-
-        public string Details { get; set; }
-        public string Is { get; set; }
 
         //Car's cost + setter and getter
         private double dCarCost;
@@ -96,7 +95,6 @@ namespace Kursova_TaxiServiceWPF.Classes
 
         //Distance Time + setter and getter
         private double dDistance;
-       
         public double Distance
         {
             get { return dDistance; }
@@ -108,11 +106,12 @@ namespace Kursova_TaxiServiceWPF.Classes
                 dDistance = 0.01d;
             }
         }
-        
+        #endregion
 
-        //Constructors
+        #region constructors
+        //default constructor with zero values
         public Taxi() {
-            ID = 0;
+            Id = 0;
             Surname = " ";
             PricePerKm = 0.0d;
             CarCost = 0.0d;
@@ -128,7 +127,7 @@ namespace Kursova_TaxiServiceWPF.Classes
             string strCarModel,
             DateTime dArrivalTime,
             double dDistance) {
-            ID = IdOfCar;
+            Id = IdOfCar;
             Surname = strDriverSurname;
             PricePerKm = dPricePerKm;
             CarCost = dCarCost;
@@ -138,7 +137,7 @@ namespace Kursova_TaxiServiceWPF.Classes
         }
 
         public Taxi(Taxi other) {
-            ID = other.IdOfCar;
+            Id = other.IdOfCar;
             Surname = other.Surname;
             PricePerKm = other.dPricePerKm;
             CarCost = other.CarCost;
@@ -146,9 +145,12 @@ namespace Kursova_TaxiServiceWPF.Classes
             ArrivalTime = other.ArrivalTime;
             Distance = other.Distance;
         }
+        #endregion
 
+        #region functionality
         public System.Double GetPriceOfAllDistance() {
             return PricePerKm * Distance;
         }
+        #endregion
     }
 }

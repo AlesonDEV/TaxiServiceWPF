@@ -42,12 +42,12 @@
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="#7FA0C6"/>
-                <Setter Property="Foreground" Value="#ffffff"/>
+                <Setter Property="Foreground" Value="{DynamicResource TextLightThemeColor}"/>
             </Trigger>
 
             <Trigger Property="IsSelected" Value="True">
                 <Setter Property="Background" Value="#7FA0C6"/>
-                <Setter Property="Foreground" Value="#ffffff"/>
+                <Setter Property="Foreground" Value="{DynamicResource TextLightThemeColor}"/>
                 
             </Trigger>
 
@@ -56,29 +56,48 @@
                     <Condition Property="IsSelected" Value="true"/>
                     <Condition Property="Selector.IsSelectionActive" Value="false"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="Background" Value="Bisque"/>
             </MultiTrigger>
         </Style.Triggers>
     </Style>
 
     <DataTemplate x:Key="CustomerDetail" >
-        <Border BorderThickness="0" Background="BlanchedAlmond" Padding="10" >
+        <StackPanel>
+            <ItemsControl ItemsSource="{Binding Details}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+    </DataTemplate>
+
+    <!--<DataTemplate x:Key="CustomerDetail" >
+        <Border BorderThickness="0" Background="#7FA0C6" Padding="10" >
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock FontSize="12" Text="Email: " VerticalAlignment="Center" />
-                    <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding Details}" VerticalAlignment="Center" />
+                    <TextBlock FontSize="12" Text="ID: "  FontWeight="SemiBold" Foreground="#ffffff" VerticalAlignment="Center" Margin="0 0 0 0"/>
+                    <TextBlock FontSize="12" FontWeight="SemiBold" Foreground="#ffffff" Text="{Binding ID}" VerticalAlignment="Center" />
+
+                    <TextBlock FontSize="12" Text="Surname: " VerticalAlignment="Center" Margin="20 0 0 0" />
+                    <TextBlock FontSize="12" Foreground="#ffffff" Text="{Binding Surname}" VerticalAlignment="Center" />
+
+                    <TextBlock FontSize="12" Text="PricePerKm: " VerticalAlignment="Center" Margin="20 0 0 0"/>
+                    <TextBlock FontSize="12" Foreground="#ffffff" Text="{Binding PricePerKm}" VerticalAlignment="Center" />
+
+                    <TextBlock FontSize="12" Text="CarCost: " VerticalAlignment="Center" Margin="20 0 0 0"/>
+                    <TextBlock FontSize="12" Foreground="#ffffff" Text="{Binding CarCost}" VerticalAlignment="Center" />
+
+                    <TextBlock FontSize="12" Text="CarModel: " VerticalAlignment="Center" Margin="20 0 0 0"/>
+                    <TextBlock FontSize="12" Foreground="#ffffff" Text="{Binding CarModel}" VerticalAlignment="Center" />
+
+                    <TextBlock FontSize="12" Text="ArrivalTime: " VerticalAlignment="Center" Margin="20 0 0 0"/>
+                    <TextBlock FontSize="12" Foreground="#ffffff" Text="{Binding ArrivalTime}" VerticalAlignment="Center" />
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock FontSize="12" Text="Phone: " VerticalAlignment="Center" />
-                    <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding Details}" VerticalAlignment="Center" />
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock FontSize="12" Text="Sales Person: " VerticalAlignment="Center" />
-                    <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding Details}" VerticalAlignment="Center" />
-                </StackPanel>
+               
             </StackPanel>
         </Border>
-    </DataTemplate>
+    </DataTemplate>-->
     
 
 
