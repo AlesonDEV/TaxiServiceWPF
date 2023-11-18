@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Collections.ObjectModel;
 
@@ -107,6 +105,9 @@ namespace Kursova_TaxiServiceWPF.Classes
             }
         }
         #endregion
+
+        public ObservableCollection<string> Details { get; set; }
+        public bool Is;
 
         #region constructors
         //default constructor with zero values

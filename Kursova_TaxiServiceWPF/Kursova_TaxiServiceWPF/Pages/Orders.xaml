@@ -15,7 +15,7 @@
         
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="80"/>
+                <RowDefinition Height="75"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
@@ -25,13 +25,14 @@
                       ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" 
                       RowStyle="{DynamicResource DataGridRowStyle1}"  Grid.Row="1"
                       RowDetailsTemplate="{DynamicResource CustomerDetail}"
+                      RowDetailsVisibilityMode="Collapsed"
                       MouseDown="membersOfDataGrid_MouseDown"
                       x:Name="membersOfDataGrid"
                       
                       Margin="20 0 20 0">
                 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="# Car" IsReadOnly="True" Width="50" Binding="{Binding ID}" />
+                    <DataGridTextColumn Header="# Car" IsReadOnly="True" Width="50" Binding="{Binding Id}" />
                     <DataGridTemplateColumn Header="Surname" IsReadOnly="True" CanUserResize="False" Width="130">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -58,7 +59,7 @@
                                     <Button Style="{StaticResource gridEditButton}" Margin="0 0 5 0">
                                         <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"/>
                                     </Button>
-                                    <Button Style="{StaticResource gridRemove Button}">
+                                    <Button x:Name="DeleteButton" Style="{StaticResource gridRemove Button}" Click="DeleteButton_Click">
                                         <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
                                     </Button>
                                 </StackPanel>
@@ -103,28 +104,25 @@
                                        Margin="0 0 15 0" Foreground="{DynamicResource TextLightThemeColor}" HorizontalAlignment="Right"/>
             </Grid>
 
+            
             <Border Grid.Row="2" HorizontalAlignment="Right" BorderThickness="1"
                     CornerRadius="5" Padding="5 4" Background="#C1D4FB" Margin="0 0 30 0" Height="30">
                 <Border.Effect>
                     <DropShadowEffect Color="#93B0EF" Direction="270" ShadowDepth="0.5" BlurRadius="6"/>
                 </Border.Effect>
                 <StackPanel Orientation="Horizontal">
-                    <Button Style="{StaticResource pagingButton}">
+                    <Button x:Name="LeftArrow" Style="{StaticResource ArrowButton}" Click="LeftArrow_Click">
                         <Icon:PackIconMaterial Kind="ChevronLeft" Style="{StaticResource pagingButtonIcon}" Margin="0 0 0 0" Width="8" Height="8"/>
                     </Button>
 
                     <Rectangle Width="0.5" Fill="Gray" Margin="3 5 2 5"/>
 
-                    <Button Style="{StaticResource pagingButton}" Content="1"/>
-                    <Button Style="{StaticResource pagingButton}" Content="2"/>
-                    <Button Style="{StaticResource pagingButton}" Content="3"/>
-                    <Button Style="{StaticResource pagingButton}" Content="4"/>
-                    <Button Style="{StaticResource pagingButton}" Content="4"/>
-                    <Button Style="{StaticResource pagingButton}" Content="4"/>
-                    <Button Style="{StaticResource pagingButton}" Content="4"/>
-                    <Button Style="{StaticResource pagingButton}" Content="4"/>
+                    <Button x:Name="FirstButton" Style="{StaticResource pagingButton}" Content="{Binding FirstPage}" />
+                    <Button x:Name="SecondButton" Style="{StaticResource pagingButton}" Content="{Binding SecondPage}" />
+                    <Button x:Name="ThirdButton" Style="{StaticResource pagingButton}" Content="{Binding ThirdPage}" />
+
                     <Rectangle Width="0.5" Fill="Gray" Margin="3 5 2 5"/>
-                    <Button Style="{StaticResource pagingButton}">
+                    <Button x:Name="RightArrow"  Style="{StaticResource ArrowButton}" Click="RightArrow_Click">
                         <Icon:PackIconMaterial Kind="ChevronRight" Style="{StaticResource pagingButtonIcon}" Width="8" Height="8"/>
                     </Button>
                 </StackPanel>

@@ -62,12 +62,7 @@
 
     <DataTemplate x:Key="CustomerDetail" >
         <StackPanel>
-            <ItemsControl ItemsSource="{Binding Details}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding}" />
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
+            <ItemsControl ItemsSource="{Binding Details}" >
             </ItemsControl>
         </StackPanel>
     </DataTemplate>

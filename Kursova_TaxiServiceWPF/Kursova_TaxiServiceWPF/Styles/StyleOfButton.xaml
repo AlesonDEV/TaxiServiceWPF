@@ -158,24 +158,32 @@
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="FontSize" Value="10"/>
         <Setter Property="Height" Value="17"/>
+        <Setter Property="Width" Value="17"/>
         <Setter Property="Margin" Value="2 0 "/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Border Background="{TemplateBinding Background}" CornerRadius="3" Padding="5 0">
-                        
+
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 0"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
 
+    <Style x:Key="ArrowButton" TargetType="Button" BasedOn="{StaticResource pagingButton}">
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{DynamicResource TextLightThemeColor}"/>
                 <Setter Property="Foreground" Value="White"/>
             </Trigger>
         </Style.Triggers>
+    </Style>
+
+    <Style x:Key="SelectedButton" TargetType="Button" BasedOn="{StaticResource pagingButton}">
+        <Setter Property="Background" Value="{DynamicResource TextLightThemeColor}"/>
+        <Setter Property="Foreground" Value="White"/>
     </Style>
 
     <Style x:Key="pagingButtonIcon" TargetType="Icon:PackIconMaterial">

@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace Kursova_TaxiServiceWPF.Classes {
     class MemberOfDataGrid {
-
+        
     }
 }

@@ -130,9 +130,8 @@ namespace Kursova_TaxiServiceWPF.Classes
         /// <returns></returns>
         public Taxi PeekById(System.Int32 IdOfTaxi) {
             if (taxisArray != null)
-                for (System.Int32 i = 0; i < iArrayCapacity; i++)
-                    if (taxisArray[i].Id == IdOfTaxi)
-                        return taxisArray[i];
+                if (IdOfTaxi < iArrayCapacity && IdOfTaxi > -1)
+                    return taxisArray[IdOfTaxi];
             return null;
         }
 
@@ -142,7 +141,7 @@ namespace Kursova_TaxiServiceWPF.Classes
         /// <returns></returns>
         public List<Taxi> GetMostExpensiveWithMinimalPriceOfTrip() {
             List<Taxi> mostExpensive = new List<Taxi>();
-            if (taxisArray != null)
+            if (taxisArray != null) {
                 if (iArrayCapacity > 1) {
                     Taxi minimalPrice = GetTaxiWithMinimalPrice();
                     for (System.Int32 i = 0; i < iArrayCapacity; i++) {
@@ -154,10 +153,12 @@ namespace Kursova_TaxiServiceWPF.Classes
                             else if (taxisArray[i].CarCost == mostExpensive[0].CarCost)
                                 mostExpensive.Add(taxisArray[i]);
                         }
-                        else 
+                        else
                             mostExpensive.Add(taxisArray[i]);
                     }
                 }
+                mostExpensive.Add(taxisArray[0]);
+            }
             return mostExpensive;
         }
 
@@ -167,7 +168,7 @@ namespace Kursova_TaxiServiceWPF.Classes
         /// <returns></returns>
         public List<Taxi> GetMostExpensiveWithMinimalArrivalTime() {
             List<Taxi> mostExpensive = new List<Taxi>();
-            if (taxisArray != null)
+            if (taxisArray != null) {
                 if (iArrayCapacity > 1) {
                     Taxi minimalPrice = GetMinimalArrivalTime();
                     for (System.Int32 i = 0; i < iArrayCapacity; i++) {
@@ -179,10 +180,12 @@ namespace Kursova_TaxiServiceWPF.Classes
                             else if (taxisArray[i].CarCost == mostExpensive[0].CarCost)
                                 mostExpensive.Add(taxisArray[i]);
                         }
-                        else 
+                        else
                             mostExpensive.Add(taxisArray[i]);
                     }
                 }
+                mostExpensive.Add(taxisArray[0]);
+            }
             return mostExpensive;
         }
 
@@ -227,10 +230,11 @@ namespace Kursova_TaxiServiceWPF.Classes
         }
         public System.Boolean DeleteTaxi(string strSurnameOfDriver) {
             for (int i = 0; i < iArrayCapacity; i++)
-                if (taxisArray[i].Surname == strSurnameOfDriver) {
+                if (!Convert.ToBoolean(taxisArray[i].Surname.CompareTo(strSurnameOfDriver))) {
                     taxisArray[i] = null;
                     for (int j = i; j < iArrayCapacity - 1; j++)
                         taxisArray[j] = taxisArray[j + 1];
+                    iArrayCapacity--;
                     return true;
                 }
             return false;
