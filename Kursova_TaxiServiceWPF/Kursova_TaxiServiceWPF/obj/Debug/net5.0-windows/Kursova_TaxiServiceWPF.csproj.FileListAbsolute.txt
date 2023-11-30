@@ -37,3 +37,6 @@ C:\Users\jorda\source\repos\TaxiServiceWPF\Kursova_TaxiServiceWPF\Kursova_TaxiSe
 C:\Users\jorda\source\repos\TaxiServiceWPF\Kursova_TaxiServiceWPF\Kursova_TaxiServiceWPF\obj\Debug\net5.0-windows\Styles\ComboBox.baml
 C:\Users\jorda\source\repos\TaxiServiceWPF\Kursova_TaxiServiceWPF\Kursova_TaxiServiceWPF\obj\Debug\net5.0-windows\Pages\AddPage.baml
 C:\Users\jorda\source\repos\TaxiServiceWPF\Kursova_TaxiServiceWPF\Kursova_TaxiServiceWPF\obj\Debug\net5.0-windows\Pages\AddPage.g.cs
+C:\Users\jorda\source\repos\TaxiServiceWPF\Kursova_TaxiServiceWPF\Kursova_TaxiServiceWPF\obj\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\jorda\source\repos\TaxiServiceWPF\Kursova_TaxiServiceWPF\Kursova_TaxiServiceWPF\obj\Debug\net5.0-windows\UserControls\uTextBox.g.cs
+C:\Users\jorda\source\repos\TaxiServiceWPF\Kursova_TaxiServiceWPF\Kursova_TaxiServiceWPF\obj\Debug\net5.0-windows\UserControls\uTextBox.baml

@@ -11,7 +11,7 @@
             </Grid.ColumnDefinitions>
             <Border x:Name="splitBorder"
                     Grid.ColumnSpan="2"
-                    CornerRadius="15"
+                    CornerRadius="5"
                     Background="#C1D4FB"
                     BorderThickness="0" 
                     SnapsToDevicePixels="true">
@@ -25,7 +25,7 @@
                           Fill="#244E91"
                           Stretch="Fill"
                           Height="7"
-                          Width="15"
+                          Width="12"
                           HorizontalAlignment="Center" 
                           VerticalAlignment="Center"/>
             </Border>
@@ -52,7 +52,7 @@
         <Setter Property="Width" Value="330"/>
         <Setter Property="Height" Value="30"/>
         <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="FontSize" Value="13"/>
         <Setter Property="Foreground" Value="{DynamicResource TextLightThemeColor}"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="Margin" Value="0 10 0 0"/>

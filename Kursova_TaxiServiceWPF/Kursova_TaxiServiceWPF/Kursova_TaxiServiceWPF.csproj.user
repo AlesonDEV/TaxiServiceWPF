@@ -7,6 +7,11 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="UserControls\uTextBox.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="Assets\Icons\Icons.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -41,6 +46,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Themes\LightTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\uTextBox.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace Kursova_TaxiServiceWPF.Classes
 {
@@ -35,10 +36,9 @@ namespace Kursova_TaxiServiceWPF.Classes
                     strDriverSurname = " ";
                     return;
                 }
-                strDriverSurname = value; 
+                strDriverSurname = value;
             }
         }
-
         //Kilometr's price + setter and getter
         private double dPricePerKm;
         public double PricePerKm

@@ -5,7 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Kursova_TaxiServiceWPF.Classes {
-    class MemberOfDataGrid {
-        
+    class GroupTaxi {
+        public System.Int32 GroupId { get; set; }
+
+        public string GroupName { get; set; }
+
+        public List<string> Details { get; set; }
     }
 }

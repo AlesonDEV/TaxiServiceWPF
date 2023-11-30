@@ -61,10 +61,12 @@
     </Style>
 
     <DataTemplate x:Key="CustomerDetail" >
-        <StackPanel>
-            <ItemsControl ItemsSource="{Binding Details}" >
-            </ItemsControl>
-        </StackPanel>
+        <Border>
+            <StackPanel>
+                <ItemsControl ItemsSource="{Binding Details}" Background="#7FA0C6" Margin="100 10 10 10" Foreground="#E7EDFF">
+                </ItemsControl>
+            </StackPanel>
+        </Border>
     </DataTemplate>
 
     <!--<DataTemplate x:Key="CustomerDetail" >

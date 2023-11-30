@@ -95,7 +95,9 @@
                 </MultiTrigger.Conditions>
                 <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
             </MultiTrigger>
-            
+            <DataTrigger Binding="{Binding ShowDetails}" Value="True">
+                <Setter Property="RowDetailsVisibilityMode" Value="Visible" />
+            </DataTrigger>
         </Style.Triggers>
         
     </Style>
