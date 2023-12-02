@@ -2,6 +2,10 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!--Background colors for main-->
+    <SolidColorBrush x:Key="LightBlueForLeftMenu" Color="#D0DFFF"/>
+
+
+
     <SolidColorBrush x:Key="BackgroundColorForLeftMenu" Color="#cadeef"/>
     <SolidColorBrush x:Key="BackgroundColorForMainPart" Color="#a8c2fb"/>
     <SolidColorBrush x:Key="DarkerBackgroundColor" Color="#9eb7e8"/>

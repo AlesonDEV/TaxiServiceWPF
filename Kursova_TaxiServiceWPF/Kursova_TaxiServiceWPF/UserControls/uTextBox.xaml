@@ -5,18 +5,42 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Kursova_TaxiServiceWPF.UserControls"
              mc:Ignorable="d" d:DesignWidth="200" d:Background="White" x:Name="UserTextBox">
+    
+    <!--Convertor for inputTextBox and hint-->
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="boolToVis"/>
     </UserControl.Resources>
 
     <StackPanel Margin="20 10">
-        <TextBlock Text="{Binding ElementName=UserTextBox, Path=Caption}" Foreground="{DynamicResource TextLightThemeColor}" FontSize="15" Margin="5 0 0 3" HorizontalAlignment="Left"/>
-        <TextBlock x:Name="WarningText" Text="{Binding ElementName=UserTextBox, Path=Warning}" Foreground="Red" FontSize="8" Margin="5 -20 3 3" HorizontalAlignment="Right"/>
+        <!--Caption-->
+        <TextBlock Text="{Binding ElementName=UserTextBox, Path=Caption}" 
+                   Foreground="{DynamicResource TextLightThemeColor}" 
+                   FontSize="15"
+                   Margin="5 0 0 3" 
+                   HorizontalAlignment="Left"/>
+        
+        <!--Warning message-->
+        <TextBlock x:Name="warningTextBox"
+                   Text="{Binding ElementName=UserTextBox, Path=Warning}"
+                   Foreground="Red" 
+                   FontSize="8" 
+                   Margin="5 -20 3 3" 
+                   HorizontalAlignment="Right"/>
+        
+        <!--Main textBox with hint-->
         <Grid>
-            <TextBlock x:Name="MainText" Margin="17.7 0" VerticalAlignment="Center" Foreground="{DynamicResource TextLightThemeColor}" IsHitTestVisible="False"
-                           Panel.ZIndex="1" Text="{Binding ElementName=UserTextBox, Path=Hint}"  Width="auto"
-                           Visibility="{Binding ElementName=textBox, Path=Text.IsEmpty, Converter={StaticResource boolToVis}}"/>
-            <TextBox x:Name="textBox" Style="{StaticResource textBoxForInputForm}" TextChanged="textBox_TextChanged"/>
+            <!--Hint-->
+            <TextBlock Margin="17.7 0"
+                       VerticalAlignment="Center" 
+                       Foreground="{DynamicResource TextLightThemeColor}" 
+                       IsHitTestVisible="False"
+                       Panel.ZIndex="1" Text="{Binding ElementName=UserTextBox, Path=Hint}"  
+                       Visibility="{Binding ElementName=inputTextBox, Path=Text.IsEmpty, Converter={StaticResource boolToVis}}"/>
+            
+            <!--InputTextBox-->
+            <TextBox x:Name="inputTextBox" 
+                     Style="{StaticResource inputTextBoxForInputForm}" 
+                     TextChanged="inputTextBox_TextChanged"/>
         </Grid>
     </StackPanel>
 </UserControl>

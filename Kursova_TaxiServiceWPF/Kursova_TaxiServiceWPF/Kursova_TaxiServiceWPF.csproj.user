@@ -30,19 +30,16 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Pages\AddPage.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="Pages\Orders.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Styles\ComboBox.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Styles\RadioButton.xaml">
+    <Page Update="Styles\StyleOfButton.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Styles\StyleOfButton.xaml">
+    <Page Update="Styles\StylesOfTextBoxes.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Themes\LightTheme.xaml">

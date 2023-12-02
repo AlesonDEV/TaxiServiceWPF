@@ -5,207 +5,382 @@
       xmlns:uc="clr-namespace:Kursova_TaxiServiceWPF.UserControls" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800"
       Title="Analytics" FontFamily="Poppins">
+   
+    <!--Convertor for textBox-->
     <Page.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
     </Page.Resources>
 
-    <Border x:Name="mainBorder" CornerRadius="0 20 20 0" Background="Transparent" Margin="20 0 20 0">
-        
+    <Border x:Name="mainBorder" 
+            CornerRadius="0 20 20 0" 
+            Background="Transparent" 
+            Margin="20 0 20 0">
         <Grid x:Name="mainGrid">
+            
             <Grid.RowDefinitions>
                 <RowDefinition Height="75"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
-
+            
+            <!--Main dataGrid-->
             <DataGrid Style="{DynamicResource DataGridStyle1}" 
                       CellStyle="{DynamicResource DataGridCellStyle1}" 
                       ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" 
-                      RowStyle="{DynamicResource DataGridRowStyle1}"  Grid.Row="1"
-                      RowDetailsTemplate="{DynamicResource CustomerDetail}"
+                      RowStyle="{DynamicResource listOfOrders_DataGrid}"  
+                      Grid.Row="1"
                       MouseDown="membersOfDataGrid_MouseDown"
-                      x:Name="membersOfDataGrid"
-                      
+                      x:Name="membersOfDataGrid"  
                       Margin="20 0 20 0">
-                <DataGrid.GroupStyle>
-                    <GroupStyle>
-                        <GroupStyle.HeaderTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal" Background="LightSteelBlue">
-                                    <TextBlock Text="{Binding Surname}" Foreground="White" Margin="5 2 5 2"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </GroupStyle.HeaderTemplate>
-                        <GroupStyle.ContainerStyle >
-                            <Style TargetType="{x:Type GroupItem}" >
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="{x:Type GroupItem}">
-                                            <Expander Background="Aquamarine" Padding="4 5" >
-                                                <Expander.Header>
-                                                    <TextBlock Text="{Binding CarModel}"/>
-                                                </Expander.Header>
-                                                <Expander.Content >
-                                                    <ItemsPresenter HorizontalAlignment="Left" Width="auto"/>
-                                                </Expander.Content>
-                                            </Expander>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                            </Style>
-                        </GroupStyle.ContainerStyle>
-                    </GroupStyle>
-                </DataGrid.GroupStyle>
                 <DataGrid.Columns>
-                    
-                    <DataGridTextColumn Header="# Car" IsReadOnly="True" Width="50" Binding="{Binding Id}" />
-                    <DataGridTemplateColumn Header="Surname" IsReadOnly="True" CanUserResize="False" Width="130">
+                    <!--Columns for dataGrid-->
+                    <DataGridTextColumn Header="№ Car" IsReadOnly="True" Width="50" Binding="{Binding Id}" />
+                    <DataGridTextColumn Header="Surname" IsReadOnly="True" Width="140" Binding="{Binding Surname}"/>
+                    <DataGridTextColumn Header="Price of km" IsReadOnly="True" Width="80" Binding="{Binding PricePerKm}"/>
+                    <DataGridTextColumn Header="Price of car" IsReadOnly="True" Width="80" Binding="{Binding CarCost}"/>
+                    <DataGridTextColumn Header="Model" IsReadOnly="True" Width="100"  Binding="{Binding CarModel}"/>
+                    <DataGridTextColumn Header="Arrival time" IsReadOnly="True" Width="160"   Binding="{Binding ArrivalTime}"/>
+                    <DataGridTextColumn Header="Distance" IsReadOnly="True" Width="80" Binding="{Binding Distance}"/>
+                    <!--Template for operaion-->
+                    <DataGridTemplateColumn Header="Operations" 
+                                            IsReadOnly="True" 
+                                            CanUserResize="False" 
+                                            Width="100">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Border Width="25" Height="25" CornerRadius="50"
-                                            Margin="0 0 10 0" Background="AliceBlue">
-                                    </Border>
-                                    <TextBlock Text="{Binding Surname}" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    
-                    <DataGridTextColumn Header="Km price" IsReadOnly="True" Width="*" Binding="{Binding PricePerKm}"/>
-                    <DataGridTextColumn Header="Price" IsReadOnly="True" Width="*" Binding="{Binding CarCost}"/>
-                    <DataGridTextColumn Header="Model" IsReadOnly="True" Width="*" Binding="{Binding CarModel}"/>
-                    <DataGridTextColumn Header="Time" IsReadOnly="True" Width="*" Binding="{Binding ArrivalTime}"/>
-                    <DataGridTextColumn Header="Distance" IsReadOnly="True" Width="*" Binding="{Binding Distance}"/>
-                    
-                    <DataGridTemplateColumn Header="Operations" IsReadOnly="True" CanUserResize="False" Width="*">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <Button Style="{StaticResource gridEditButton}" Margin="0 0 5 0">
-                                        <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"/>
-                                    </Button>
-                                    <Button x:Name="DeleteButton" Style="{StaticResource gridRemove Button}" Click="DeleteButton_Click">
-                                        <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
+                                    <Button x:Name="DeleteButton"
+                                            Style="{StaticResource gridRemoveButton}"
+                                            Click="DeleteButton_Click">
+                                        <Icon:PackIconMaterial Kind="DeleteOutline"
+                                                               Style="{StaticResource gridButtonIcon}"/>
                                     </Button>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                
                 </DataGrid.Columns>
-               
             </DataGrid>
-
-
-
+            
+            <!--Top grid row for buttons, comboBox, searchTextBox-->
             <Grid Grid.Row="0">
-                <Button x:Name="ActionButton" Style="{StaticResource addButton}" Margin="285 0 0 15" Click="ActionButton_Click" Width="110">
+                <ComboBox x:Name="actionComboBox" 
+                          Style="{DynamicResource ComboBoxStyle1}" 
+                          Margin="60 15 0 0" 
+                          HorizontalAlignment="Left" 
+                          Width="220">
+                    <ComboBoxItem Content="Qiuck Sort" Margin="0 2 3 0"/>
+                    <ComboBoxItem Content="Get taxi with minimal arrival time"/>
+                    <ComboBoxItem Content="Get information about taxi by id"/>
+                    <ComboBoxItem Content="Get most expensive car with minimal arrival time"/>
+                    <ComboBoxItem Content="Get most expensive car with minimal price of trip"/>
+                    <ComboBoxItem Content="Group taxis, where price of trip and arrivaltime are the same"/>
+                    <ComboBoxItem Content="Group taxis by models and sort in group"/>
+                </ComboBox>
+
+                <Button x:Name="ActionButton" 
+                        Style="{StaticResource addButton}"
+                        Margin="285 0 0 15"
+                        Click="ActionButton_Click" 
+                        Width="110">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Do action"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="AddingButton" Style="{StaticResource addButton}" Margin="400 0 0 15" Click="AddingButton_Click" Width="110">
+
+                <Button x:Name="AddingButton" 
+                        Style="{StaticResource addButton}" 
+                        Margin="400 0 0 15" 
+                        Click="AddingButton_Click" 
+                        Width="110">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Add "/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="Back_Button" Style="{StaticResource addButton}" Margin="20 0 0 15" Width="36" Click="Back_Button_Click">
+
+                <Button x:Name="Back_Button" 
+                        Style="{StaticResource addButton}"
+                        Margin="20 0 0 15" 
+                        Width="36"
+                        Click="Back_Button_Click">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Back"/>
                     </StackPanel>
                 </Button>
+                
+                <!--Grid with searchTextBox-->
+                <Grid Width="210" 
+                      Height="30" 
+                      VerticalAlignment="Bottom"
+                      HorizontalAlignment="Right"
+                      Margin="0 0 35 15" 
+                      Grid.Row="0">
+                    <TextBlock Margin="20 0" 
+                               VerticalAlignment="Center" 
+                               Foreground="{DynamicResource TextLightThemeColor}" 
+                               IsHitTestVisible="False"
+                               Panel.ZIndex="1" Text="Search here ..."
+                               Visibility="{Binding ElementName=txtSearch, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}"/>
+                    <TextBox x:Name="txtSearch" 
+                             Style="{StaticResource textBoxSearch}" 
+                             VerticalAlignment="Center"
+                             TextAlignment="Left" 
+                             TextChanged="txtSearch_TextChanged"  
+                             Width="210"/>
+                    <Icon:PackIconMaterial Kind="Magnify" 
+                                           Width="15" 
+                                           Height="15" 
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 15 0" 
+                                           Foreground="{DynamicResource TextLightThemeColor}" 
+                                           HorizontalAlignment="Right"/>
+                </Grid>
             </Grid>
-            
-            <Grid Grid.Row="0">
-                <ComboBox x:Name="comboBox" Style="{DynamicResource ComboBoxStyle1}" Margin="60 15 0 0" HorizontalAlignment="Left" Width="220">
-                    <ComboBoxItem Content="Qiuck Sort" Margin="0 2 3 0"/>
-                    <ComboBoxItem Content="Minimal Arrival Time"/>
-                    <ComboBoxItem Content="Selected car"/>
-                    <ComboBoxItem Content="Most expensive with cheapest"/>
-                    <ComboBoxItem Content="Group rows"/>
-                    <ComboBoxItem Content="Group models and sort"/>
-                </ComboBox>
+
+            <!--Bottom grid row for buttons, comboBoxes, pagination-->
+            <Grid Grid.Row="2">
+                <!--Border with combobox for number of elements on -page-->
+                <Border>
+                    <ComboBox x:Name="NumberOfElements_ComboBox" 
+                              Style="{DynamicResource ComboBoxStyle1}"
+                              Width="62"  
+                              Height="28" 
+                              Margin="30 0.3 162 0" 
+                              HorizontalAlignment="Right" 
+                              FontSize="13" 
+                              SelectionChanged="NumberOfElements_ComboBox_SelectionChanged">
+                        <ComboBoxItem Content="12" 
+                                      Margin="0 2 3 0"/>
+                        <ComboBoxItem Content="24"/>
+                        <ComboBoxItem Content="36"/>
+                    </ComboBox>
+                </Border>
+                
+                <!--Border with elements that relate to operations with file-->
+                <Border>
+                    <StackPanel>
+                        <TextBox x:Name="FileTextBox" 
+                                 Style="{StaticResource inputTextBoxForInputForm}" 
+                                 Width="170" 
+                                 HorizontalAlignment="Left" 
+                                 Margin="20 15 0 0"/>
+                        <Button x:Name="WriteButton"  
+                                Click="WriteButton_Click" 
+                                Style="{StaticResource addButton}" 
+                                Content="Write in file" 
+                                Width="100" 
+                                Height="30" 
+                                Margin="200 -35 0 0"/>
+                        <Button x:Name="ReadButton" 
+                                Click="ReadButton_Click" 
+                                Style="{StaticResource addButton}" 
+                                Content="Read from file" 
+                                Width="100" 
+                                Height="30" 
+                                Margin="310 -45 0 0"/>
+                    </StackPanel>
+                </Border>
+                
+                <!--Pagination-->
+                <Border HorizontalAlignment="Right" 
+                        BorderThickness="1"
+                        CornerRadius="5" 
+                        Padding="5 4" 
+                        Background="#C1D4FB" 
+                        Margin="0 0 30 0" 
+                        Height="30">
+                    <Border.Effect>
+                        <DropShadowEffect Color="#93B0EF" 
+                                          Direction="270" 
+                                          ShadowDepth="0.5" 
+                                          BlurRadius="6"/>
+                    </Border.Effect>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="LeftArrow" 
+                                Style="{StaticResource ArrowButton}" 
+                                Click="LeftArrow_Click">
+                            <Icon:PackIconMaterial Kind="ChevronLeft" 
+                                                   Style="{StaticResource pagingButtonIcon}" 
+                                                   Margin="0 0 0 0" 
+                                                   Width="8" 
+                                                   Height="8"/>
+                        </Button>
+
+                        <Rectangle Width="0.5"
+                                   Fill="Gray" 
+                                   Margin="3 5 2 5"/>
+
+                        <Button x:Name="FirstButton" 
+                                Style="{StaticResource pagingButton}" 
+                                Content="{Binding FirstPage}" />
+
+                        <Button x:Name="SecondButton" 
+                                Style="{StaticResource pagingButton}"
+                                Content="{Binding SecondPage}" />
+
+                        <Button x:Name="ThirdButton" 
+                                Style="{StaticResource pagingButton}" 
+                                Content="{Binding ThirdPage}" />
+
+                        <Rectangle Width="0.5" 
+                                   Fill="Gray" 
+                                   Margin="3 5 2 5"/>
+
+                        <Button x:Name="RightArrow" 
+                                Style="{StaticResource ArrowButton}" 
+                                Click="RightArrow_Click">
+                            <Icon:PackIconMaterial Kind="ChevronRight" 
+                                                   Style="{StaticResource pagingButtonIcon}" 
+                                                   Width="8" 
+                                                   Height="8"/>
+                        </Button>
+                    </StackPanel>
+                </Border>
             </Grid>
            
-
-            <Grid Width="210" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 35 15" Grid.Row="0">
-
-                <TextBlock Margin="20 0" VerticalAlignment="Center" Foreground="{DynamicResource TextLightThemeColor}" IsHitTestVisible="False"
-                           Panel.ZIndex="1" Text="Search here ..."
-                           Visibility="{Binding ElementName=txtSearch, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}"/>
-                <TextBox x:Name="txtSearch" Style="{StaticResource TextBoxSearch}" VerticalAlignment="Center" TextAlignment="Left" TextChanged="txtSearch_TextChanged"  Width="210"/>
-                <Icon:PackIconMaterial Kind="Magnify" Width="15" Height="15" VerticalAlignment="Center"
-                                       Margin="0 0 15 0" Foreground="{DynamicResource TextLightThemeColor}" HorizontalAlignment="Right"/>
-            </Grid>
-
-            <Border Grid.Row="2">
-                <ComboBox x:Name="NumberOfElements_ComboBox" Style="{DynamicResource ComboBoxStyle1}" Width="62"  Height="28" Margin="30 0.3 162 0" HorizontalAlignment="Right" FontSize="13" SelectionChanged="NumberOfElements_ComboBox_SelectionChanged">
-                    <ComboBoxItem Content="12" Margin="0 2 3 0"/>
-                    <ComboBoxItem Content="24"/>
-                    <ComboBoxItem Content="36"/>
-                </ComboBox>
-            </Border>
-
-            <Border Grid.Row="2" HorizontalAlignment="Right" BorderThickness="1"
-                    CornerRadius="5" Padding="5 4" Background="#C1D4FB" Margin="0 0 30 0" Height="30">
-                
-                <Border.Effect>
-                    <DropShadowEffect Color="#93B0EF" Direction="270" ShadowDepth="0.5" BlurRadius="6"/>
-                </Border.Effect>
-                
-                <StackPanel Orientation="Horizontal">
-                    
-                    <Button x:Name="LeftArrow" Style="{StaticResource ArrowButton}" Click="LeftArrow_Click">
-                        <Icon:PackIconMaterial Kind="ChevronLeft" Style="{StaticResource pagingButtonIcon}" Margin="0 0 0 0" Width="8" Height="8"/>
-                    </Button>
-
-                    <Rectangle Width="0.5" Fill="Gray" Margin="3 5 2 5"/>
-
-                    <Button x:Name="FirstButton" Style="{StaticResource pagingButton}" Content="{Binding FirstPage}" />
-                    <Button x:Name="SecondButton" Style="{StaticResource pagingButton}" Content="{Binding SecondPage}" />
-                    <Button x:Name="ThirdButton" Style="{StaticResource pagingButton}" Content="{Binding ThirdPage}" />
-
-                    <Rectangle Width="0.5" Fill="Gray" Margin="3 5 2 5"/>
-                    <Button x:Name="RightArrow"  Style="{StaticResource ArrowButton}" Click="RightArrow_Click">
-                        <Icon:PackIconMaterial Kind="ChevronRight" Style="{StaticResource pagingButtonIcon}" Width="8" Height="8"/>
-                    </Button>
-                </StackPanel>
-            </Border>
-
-            <Popup Name="inputPopup" IsOpen="False" StaysOpen="True" Placement="Center">
-                <Border Background="#A1BFFB" Width="300" Height="540" BorderThickness="2" BorderBrush="#9CBBFB">
+            <!--PopUp for adding new elements-->
+            <Popup Name="inputPopup" 
+                   IsManipulationEnabled="True" 
+                   IsOpen="False" 
+                   StaysOpen="True"  
+                   Placement="Mouse" 
+                   MouseMove="inputPopup_MouseMove" 
+                   MouseLeftButtonDown="inputPopup_MouseLeftButtonDown" 
+                   MouseLeftButtonUp="inputPopup_MouseLeftButtonUp">
+                <Border Background="#A1BFFB" 
+                        Width="300" 
+                        Height="540" 
+                        BorderThickness="2" 
+                        BorderBrush="#9CBBFB">
                     <Border.Effect>
-                        <DropShadowEffect Color="#8193FB" Direction="270" ShadowDepth="0.8" BlurRadius="6"/>
+                        <DropShadowEffect Color="#8193FB" 
+                                          Direction="270" 
+                                          ShadowDepth="0.8" 
+                                          BlurRadius="6"/>
                     </Border.Effect>
-                    <!-- Input form controls go here -->
+                    
                     <StackPanel Background="Transparent">
-                        <Button x:Name="Back_ButtonInput" Style="{StaticResource addButton}" Margin="10 10 0 0" Width="60" Height="23" Click="Back_ButtonInput_Click">
+                        <Button x:Name="Back_ButtonInput" Style="{StaticResource addButton}" 
+                                Margin="10 10 0 0" 
+                                Width="60" 
+                                Height="23" 
+                                Click="Back_ButtonInput_Click">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Back"/>
                             </StackPanel>
                         </Button>
+                        
                         <Border>
-                            <TextBlock Text="Input form" Margin="60 -28 0 0" HorizontalAlignment="Center" Foreground="#A3CBF5" FontWeight="Bold" FontSize="29"/>
+                            <TextBlock Text="Input form" 
+                                       Margin="60 -28 0 0" 
+                                       HorizontalAlignment="Center" 
+                                       Foreground="#A3CBF5" 
+                                       FontWeight="Bold" 
+                                       FontSize="29"/>
                             <Border.Effect>
-                                <DropShadowEffect Color="#6E8FEA" Direction="270" ShadowDepth="0.4" BlurRadius="2"/>
+                                <DropShadowEffect Color="#6E8FEA"
+                                                  Direction="270" 
+                                                  ShadowDepth="0.4"
+                                                  BlurRadius="2"/>
                             </Border.Effect>
                         </Border>
                         
-                        <uc:uTextBox x:Name="SurnamePopUp" Caption="Surname" Hint="Enter the surname of driver..."/>
-                        <uc:uTextBox x:Name="PricePerKmPopUp" Caption="Price per kilometre" Hint="Enter the price in dollars..."/>
-                        <uc:uTextBox x:Name="CarPricePopUp" Caption="Car's price" Hint="Enter the price of car..."/>
-                        <uc:uTextBox x:Name="CarModelPopUp" Caption="Car's model" Hint="Enter the model of car..."/>
-                        <uc:uTextBox x:Name="ArrivallTimePopUp" Caption="Arrival time" Hint="Enter the approximate arrival time..."/>
-                        <uc:uTextBox x:Name="DistancePopUp" Caption="Distance" Hint="Enter the approximate distance..."/>
-                        <Button Content="Sumbit" Style="{StaticResource addButton}" Height="40" Margin="0 10 0 0" HorizontalAlignment="Center"/>
+                        <uc:uTextBox x:Name="SurnamePopUp" 
+                                     Caption="Surname" 
+                                     Hint="Enter the surname of driver..."/>
+                        
+                        <uc:uTextBox x:Name="PricePerKmPopUp" 
+                                     Caption="Price per kilometre" 
+                                     Hint="Enter the price in dollars..."/>
+                        
+                        <uc:uTextBox x:Name="CarPricePopUp" 
+                                     Caption="Car's price" 
+                                     Hint="Enter the price of car..."/>
+                        
+                        <uc:uTextBox x:Name="CarModelPopUp" 
+                                     Caption="Car's model" 
+                                     Hint="Enter the model of car..."/>
+                        
+                        <uc:uTextBox x:Name="ArrivallTimePopUp" 
+                                     Caption="Arrival time" 
+                                     Hint="Format - yyyy-MM-dd HH:mm:ss"/>
+                        
+                        <uc:uTextBox x:Name="DistancePopUp" 
+                                     Caption="Distance" 
+                                     Hint="Enter the approximate distance..."/>
+                        
+                        <Button Content="Sumbit" 
+                                Style="{StaticResource addButton}" 
+                                Height="40" 
+                                Margin="0 10 0 0" 
+                                Click="Sumbit_Click" 
+                                HorizontalAlignment="Center"/>
                     </StackPanel>
                 </Border>
             </Popup>
+            
+            <!--PopUp for seraching by id-->
+            <Popup Name="IdSearchPopUp" 
+                   IsManipulationEnabled="True" 
+                   IsOpen="False" StaysOpen="True"  
+                   Placement="Mouse">
+                <Border Background="#A1BFFB" 
+                        Width="300"
+                        Height="180" 
+                        BorderThickness="2" 
+                        BorderBrush="#9CBBFB">
+                    <Border.Effect>
+                        <DropShadowEffect Color="#8193FB"
+                                          Direction="270" 
+                                          ShadowDepth="0.8"
+                                          BlurRadius="6"/>
+                    </Border.Effect>
 
+                    <StackPanel Background="Transparent">
+                        <Button x:Name="BackIdSearchButton" 
+                                Style="{StaticResource addButton}"
+                                Margin="10 10 0 0" 
+                                Width="60" 
+                                Height="23" 
+                                Click="BackIdSearchButton_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Back"/>
+                            </StackPanel>
+                        </Button>
+
+                        <Border>
+                            <TextBlock Text="Input form"
+                                       Margin="60 -28 0 0"
+                                       HorizontalAlignment="Center"
+                                       Foreground="#A3CBF5" 
+                                       FontWeight="Bold" 
+                                       FontSize="29"/>
+
+                            <Border.Effect>
+                                <DropShadowEffect Color="#6E8FEA" 
+                                                  Direction="270" 
+                                                  ShadowDepth="0.4"
+                                                  BlurRadius="2"/>
+                            </Border.Effect>
+                        </Border>
+
+                        <uc:uTextBox x:Name="IdSearch" 
+                                     Caption="Id of car" 
+                                     Hint="Enter the id of car..."/>
+
+                        <Button x:Name="SumbitIdPopUp" 
+                                Content="Sumbit" 
+                                Style="{StaticResource addButton}" 
+                                Height="40" 
+                                Margin="0 10 0 0" 
+                                Click="SumbitIdPopUp_Click"
+                                HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+            </Popup>
         </Grid>
     </Border>
 </Page>

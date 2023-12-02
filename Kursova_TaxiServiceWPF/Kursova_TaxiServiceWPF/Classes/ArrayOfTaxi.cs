@@ -66,20 +66,18 @@ namespace Kursova_TaxiServiceWPF.Classes
         private void SortBySurnameInGroups(Dictionary<string, List<Taxi>> groupsDictionary) {
             foreach (var group in groupsDictionary) {
                 System.Int32 sizeOfList = group.Value.Count;
-                for (System.Int32 i = 0; i < sizeOfList; i++) {
-                    System.Int32 gap = sizeOfList / 2;
-                    while (gap > 0) {
-                        for (System.Int32 k = gap; i < sizeOfList; i++) {
-                            Taxi tempValue = group.Value[i];
-                            System.Int32 indexJ = k;
-                            while (indexJ >= gap && Convert.ToBoolean(string.Compare(group.Value[indexJ - gap].Surname, tempValue.Surname))) {
-                                group.Value[indexJ] = group.Value[indexJ - gap];
-                                indexJ -= gap;
-                            }
-                            group.Value[indexJ] = tempValue;
+                bool isSwapped = false;
+                for (int i = 0; i < sizeOfList - 1; i++) {
+                    isSwapped = false;
+                    for (int j = 0; j < sizeOfList - i - 1; j++)
+                        if (string.Compare(group.Value[j].Surname, group.Value[j + 1].Surname) > 0) {
+                            Taxi temp = group.Value[j];
+                            group.Value[j] = group.Value[j + 1];
+                            group.Value[j + 1] = temp;
+                            isSwapped = true;
                         }
-                        gap /= 2;
-                    }
+                    if (!isSwapped)
+                        break;
                 }
             }
         }
@@ -110,13 +108,18 @@ namespace Kursova_TaxiServiceWPF.Classes
         /// 2. Determine the car number with the shortest arrival time.
         /// </summary>
         /// <returns></returns>
-        public Taxi GetMinimalArrivalTime() {
+        public List<Taxi> GetMinimalArrivalTime() {
             if (taxisArray != null) {
-                Taxi valueToReturn = taxisArray[0];
+                List<Taxi> valueToReturn = new List<Taxi>();
                 if (iArrayCapacity > 1) {
+                    valueToReturn.Add(taxisArray[0]);
                     for (System.Int32 i = 1; i < iArrayCapacity; i++)
-                        if (taxisArray[i].ArrivalTime < valueToReturn.ArrivalTime)
-                            valueToReturn = taxisArray[i];
+                        if (taxisArray[i].ArrivalTime < valueToReturn[0].ArrivalTime) {
+                            valueToReturn.Clear();
+                            valueToReturn.Add(taxisArray[i]);
+                        }
+                        else if (taxisArray[i].ArrivalTime == valueToReturn[0].ArrivalTime)
+                            valueToReturn.Add(taxisArray[i]);
                 }
                 return valueToReturn;
             }
@@ -131,7 +134,9 @@ namespace Kursova_TaxiServiceWPF.Classes
         public Taxi PeekById(System.Int32 IdOfTaxi) {
             if (taxisArray != null)
                 if (IdOfTaxi < iArrayCapacity && IdOfTaxi > -1)
-                    return taxisArray[IdOfTaxi];
+                    for (int i = 0; i < taxisArray.Length; i++)
+                        if (taxisArray[i].Id == IdOfTaxi) 
+                            return taxisArray[i];
             return null;
         }
 
@@ -170,21 +175,22 @@ namespace Kursova_TaxiServiceWPF.Classes
             List<Taxi> mostExpensive = new List<Taxi>();
             if (taxisArray != null) {
                 if (iArrayCapacity > 1) {
-                    Taxi minimalPrice = GetMinimalArrivalTime();
+                    List<Taxi> minimalArrivalTime = GetMinimalArrivalTime();
                     for (System.Int32 i = 0; i < iArrayCapacity; i++) {
-                        if (taxisArray[i].ArrivalTime == minimalPrice.ArrivalTime && mostExpensive.Count > 0) {
+                        if (taxisArray[i].ArrivalTime == minimalArrivalTime[0].ArrivalTime && mostExpensive.Count > 0) {
                             if (taxisArray[i].CarCost > mostExpensive[0].CarCost) {
                                 mostExpensive.Clear();
                                 mostExpensive.Add(taxisArray[i]);
                             }
-                            else if (taxisArray[i].CarCost == mostExpensive[0].CarCost)
+                            else if (Math.Abs(taxisArray[i].CarCost - mostExpensive[0].CarCost) < 1e-5)
                                 mostExpensive.Add(taxisArray[i]);
                         }
-                        else
+                        else if (taxisArray[i].ArrivalTime == minimalArrivalTime[0].ArrivalTime)
                             mostExpensive.Add(taxisArray[i]);
                     }
                 }
-                mostExpensive.Add(taxisArray[0]);
+                else
+                    mostExpensive.Add(taxisArray[0]);
             }
             return mostExpensive;
         }
@@ -198,7 +204,7 @@ namespace Kursova_TaxiServiceWPF.Classes
             if (taxisArray != null && iArrayCapacity > 1)
                 for (System.Int32 i = 0; i < iArrayCapacity; i++) {
                     if (!groupsDictionary.ContainsKey((taxisArray[i].PricePerKm * taxisArray[i].Distance).ToString() + "_" + taxisArray[i].ArrivalTime.ToString()))
-                        groupsDictionary[taxisArray[i].PricePerKm.ToString()] = new List<Taxi>();
+                        groupsDictionary[(taxisArray[i].PricePerKm * taxisArray[i].Distance).ToString() + "_" + taxisArray[i].ArrivalTime.ToString()] = new List<Taxi>();
                     groupsDictionary[(taxisArray[i].PricePerKm * taxisArray[i].Distance).ToString() + "_" + taxisArray[i].ArrivalTime.ToString()].Add(taxisArray[i]);
                 }
             return groupsDictionary;
@@ -241,6 +247,12 @@ namespace Kursova_TaxiServiceWPF.Classes
         }
         public System.Int32 GetCount() {
             return iArrayCapacity;
+        }
+        public Taxi PeekByIndex(System.Int32 IndexOfTaxi) {
+            if (taxisArray != null)
+                if (IndexOfTaxi < iArrayCapacity && IndexOfTaxi > -1)
+                    return taxisArray[IndexOfTaxi];
+            return null;
         }
         #endregion
     }

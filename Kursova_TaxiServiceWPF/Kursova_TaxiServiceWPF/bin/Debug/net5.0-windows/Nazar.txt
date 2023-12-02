@@ -1,0 +1,648 @@
+------------------
+Id -1
+Surname -Samoilich
+Price perkilometre -2
+Car cost -323
+Car model -dsfds1
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -4
+------------------
+Id -1
+Surname -Lukianov
+Price perkilometre -0,01
+Car cost -323
+Car model -dsfds1
+Arrival time -02.12.2023 13:53:36
+Distance -2
+Price for all journey -0,02
+------------------
+Id -1
+Surname -Moxnat
+Price perkilometre -1
+Car cost -323
+Car model -dsfds1
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -2
+------------------
+Id -1
+Surname -Bodnar
+Price perkilometre -2
+Car cost -323
+Car model -dsfds2
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -4
+------------------
+Id -1
+Surname -Samoilich
+Price perkilometre -1
+Car cost -323
+Car model -dsfds2
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -2
+------------------
+Id -1
+Surname -Bodnar
+Price perkilometre -1
+Car cost -323
+Car model -dsfds0
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -2
+------------------
+Id -1
+Surname -Samoilich
+Price perkilometre -1
+Car cost -323
+Car model -dsfds1
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -2
+------------------
+Id -1
+Surname -Samoilich
+Price perkilometre -2
+Car cost -323
+Car model -dsfds2
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -4
+------------------
+Id -1
+Surname -Moxnat
+Price perkilometre -3
+Car cost -323
+Car model -dsfds2
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -6
+------------------
+Id -1
+Surname -Lukianov
+Price perkilometre -0,01
+Car cost -323
+Car model -dsfds1
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -0,02
+------------------
+Id -1
+Surname -Samoilich
+Price perkilometre -3
+Car cost -323
+Car model -dsfds1
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -6
+------------------
+Id -1
+Surname -Samoilich
+Price perkilometre -1
+Car cost -323
+Car model -dsfds0
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -2
+------------------
+Id -1
+Surname -Lukianov
+Price perkilometre -2
+Car cost -323
+Car model -dsfds1
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -4
+------------------
+Id -1
+Surname -Moxnat
+Price perkilometre -0,01
+Car cost -323
+Car model -dsfds1
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -0,02
+------------------
+Id -1
+Surname -Bodnar
+Price perkilometre -2
+Car cost -323
+Car model -dsfds1
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -4
+------------------
+Id -1
+Surname -Moxnat
+Price perkilometre -0,01
+Car cost -323
+Car model -dsfds2
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -0,02
+------------------
+Id -1
+Surname -Bodnar
+Price perkilometre -3
+Car cost -323
+Car model -dsfds2
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -6
+------------------
+Id -1
+Surname -Moxnat
+Price perkilometre -3
+Car cost -323
+Car model -dsfds0
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -6
+------------------
+Id -1
+Surname -Samoilich
+Price perkilometre -0,01
+Car cost -323
+Car model -dsfds0
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -0,02
+------------------
+Id -1
+Surname -Samoilich
+Price perkilometre -0,01
+Car cost -323
+Car model -dsfds2
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -0,02
+------------------
+Id -1
+Surname -Bodnar
+Price perkilometre -3
+Car cost -323
+Car model -dsfds1
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -6
+------------------
+Id -1
+Surname -Lukianov
+Price perkilometre -1
+Car cost -323
+Car model -dsfds1
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -2
+------------------
+Id -1
+Surname -Moxnat
+Price perkilometre -3
+Car cost -323
+Car model -dsfds2
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -6
+------------------
+Id -1
+Surname -Moxnat
+Price perkilometre -1
+Car cost -323
+Car model -dsfds1
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -2
+------------------
+Id -1
+Surname -Bodnar
+Price perkilometre -3
+Car cost -323
+Car model -dsfds0
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -6
+------------------
+Id -1
+Surname -Moxnat
+Price perkilometre -2
+Car cost -323
+Car model -dsfds2
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -4
+------------------
+Id -1
+Surname -Bodnar
+Price perkilometre -0,01
+Car cost -323
+Car model -dsfds1
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -0,02
+------------------
+Id -1
+Surname -Lukianov
+Price perkilometre -1
+Car cost -323
+Car model -dsfds0
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -2
+------------------
+Id -1
+Surname -Moxnat
+Price perkilometre -3
+Car cost -323
+Car model -dsfds1
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -6
+------------------
+Id -1
+Surname -Lukianov
+Price perkilometre -2
+Car cost -323
+Car model -dsfds1
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -4
+------------------
+Id -1
+Surname -Samoilich
+Price perkilometre -2
+Car cost -323
+Car model -dsfds1
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -4
+------------------
+Id -1
+Surname -Bodnar
+Price perkilometre -1
+Car cost -323
+Car model -dsfds1
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -2
+------------------
+Id -1
+Surname -Moxnat
+Price perkilometre -0,01
+Car cost -323
+Car model -dsfds0
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -0,02
+------------------
+Id -1
+Surname -Bodnar
+Price perkilometre -3
+Car cost -323
+Car model -dsfds2
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -6
+------------------
+Id -1
+Surname -Lukianov
+Price perkilometre -3
+Car cost -323
+Car model -dsfds1
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -6
+------------------
+Id -1
+Surname -Lukianov
+Price perkilometre -0,01
+Car cost -323
+Car model -dsfds2
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -0,02
+------------------
+Id -1
+Surname -Lukianov
+Price perkilometre -3
+Car cost -323
+Car model -dsfds1
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -6
+------------------
+Id -1
+Surname -Lukianov
+Price perkilometre -3
+Car cost -323
+Car model -dsfds2
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -6
+------------------
+Id -1
+Surname -Bodnar
+Price perkilometre -3
+Car cost -323
+Car model -dsfds1
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -6
+------------------
+Id -1
+Surname -Samoilich
+Price perkilometre -3
+Car cost -323
+Car model -dsfds1
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -6
+------------------
+Id -1
+Surname -Bodnar
+Price perkilometre -3
+Car cost -323
+Car model -dsfds2
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -6
+------------------
+Id -1
+Surname -Moxnat
+Price perkilometre -0,01
+Car cost -323
+Car model -dsfds2
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -0,02
+------------------
+Id -1
+Surname -Samoilich
+Price perkilometre -2
+Car cost -323
+Car model -dsfds0
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -4
+------------------
+Id -1
+Surname -Samoilich
+Price perkilometre -2
+Car cost -323
+Car model -dsfds1
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -4
+------------------
+Id -1
+Surname -Bodnar
+Price perkilometre -3
+Car cost -323
+Car model -dsfds0
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -6
+------------------
+Id -1
+Surname -Moxnat
+Price perkilometre -3
+Car cost -323
+Car model -dsfds2
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -6
+------------------
+Id -1
+Surname -Lukianov
+Price perkilometre -2
+Car cost -323
+Car model -dsfds1
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -4
+------------------
+Id -1
+Surname -Lukianov
+Price perkilometre -0,01
+Car cost -323
+Car model -dsfds2
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -0,02
+------------------
+Id -1
+Surname -Moxnat
+Price perkilometre -1
+Car cost -323
+Car model -dsfds0
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -2
+------------------
+Id -1
+Surname -Bodnar
+Price perkilometre -2
+Car cost -323
+Car model -dsfds2
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -4
+------------------
+Id -1
+Surname -Samoilich
+Price perkilometre -2
+Car cost -323
+Car model -dsfds1
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -4
+------------------
+Id -1
+Surname -Bodnar
+Price perkilometre -0,01
+Car cost -323
+Car model -dsfds2
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -0,02
+------------------
+Id -1
+Surname -Samoilich
+Price perkilometre -2
+Car cost -323
+Car model -dsfds1
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -4
+------------------
+Id -1
+Surname -Samoilich
+Price perkilometre -1
+Car cost -323
+Car model -dsfds1
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -2
+------------------
+Id -1
+Surname -Samoilich
+Price perkilometre -0,01
+Car cost -323
+Car model -dsfds0
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -0,02
+------------------
+Id -1
+Surname -Bodnar
+Price perkilometre -1
+Car cost -323
+Car model -dsfds1
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -2
+------------------
+Id -1
+Surname -Moxnat
+Price perkilometre -0,01
+Car cost -323
+Car model -dsfds0
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -0,02
+------------------
+Id -1
+Surname -Lukianov
+Price perkilometre -2
+Car cost -323
+Car model -dsfds2
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -4
+------------------
+Id -1
+Surname -Bodnar
+Price perkilometre -2
+Car cost -323
+Car model -dsfds0
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -4
+------------------
+Id -1
+Surname -Samoilich
+Price perkilometre -2
+Car cost -323
+Car model -dsfds1
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -4
+------------------
+Id -1
+Surname -Samoilich
+Price perkilometre -1
+Car cost -323
+Car model -dsfds1
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -2
+------------------
+Id -1
+Surname -Bodnar
+Price perkilometre -2
+Car cost -323
+Car model -dsfds2
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -4
+------------------
+Id -1
+Surname -Bodnar
+Price perkilometre -3
+Car cost -323
+Car model -dsfds1
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -6
+------------------
+Id -1
+Surname -Lukianov
+Price perkilometre -3
+Car cost -323
+Car model -dsfds0
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -6
+------------------
+Id -1
+Surname -Samoilich
+Price perkilometre -2
+Car cost -323
+Car model -dsfds2
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -4
+------------------
+Id -1
+Surname -Samoilich
+Price perkilometre -1
+Car cost -323
+Car model -dsfds2
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -2
+------------------
+Id -1
+Surname -Bodnar
+Price perkilometre -2
+Car cost -323
+Car model -dsfds0
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -4
+------------------
+Id -1
+Surname -Lukianov
+Price perkilometre -1
+Car cost -323
+Car model -dsfds2
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -2
+------------------
+Id -1
+Surname -Moxnat
+Price perkilometre -3
+Car cost -323
+Car model -dsfds2
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -6
+------------------
+Id -1
+Surname -Bodnar
+Price perkilometre -3
+Car cost -323
+Car model -dsfds1
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -6
+------------------
+Id -1
+Surname -Moxnat
+Price perkilometre -3
+Car cost -323
+Car model -dsfds1
+Arrival time -02.12.2023 0:00:00
+Distance -2
+Price for all journey -6
+------------------
+Id -1
+Surname -Bodnar
+Price perkilometre -0,01
+Car cost -323
+Car model -dsfds0
+Arrival time -02.12.2023 23:09:06
+Distance -2
+Price for all journey -0,02

@@ -12,136 +12,123 @@
         Background="Transparent" AllowsTransparency="True"
         ResizeMode="NoResize" WindowState="Normal" FontFamily="Poppins">
 
-    <Border Background="{DynamicResource BackgroundColorForMainPart}"
+    <Border x:Name="mainBorder" 
+            Background="{DynamicResource BackgroundColorForMainPart}"
             CornerRadius="20">
         <Grid>
-
+            
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             
-            
-            
+            <!--Birder for left menu-->
             <Border CornerRadius="0 70 0 20"
-                    Background="#D0DFFF" Margin="0 80 0 0">
-                
+                    Background="{DynamicResource LightBlueForLeftMenu}"
+                    Margin="0 80 0 0">
+                <!--Shadow for left menu-->
                 <Border.Effect>
-                    <Effects:DropShadowEffect Color="#9CB6F3" Direction="270" ShadowDepth="1" BlurRadius="15"/>
+                    <Effects:DropShadowEffect Color="#9CB6F3"
+                                              Direction="270" 
+                                              ShadowDepth="1" 
+                                              BlurRadius="15"/>
                 </Border.Effect>
-                <Grid  x:Name="gridOfLeftMenu">
+                
+                <!--Grid of left menu-->
+                <Grid  x:Name="LeftMenuGrid">
+                    
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="0"/>
                         <RowDefinition Height="130"/>
                         <RowDefinition Height="*"/>
-                        <RowDefinition Height="25"/>
                     </Grid.RowDefinitions>
-                    <!--<Border Grid.Row="0" Background="#A6C8E6" CornerRadius="20 0 0 0">
-
-                    </Border>-->
-
-                    <Border Grid.Row="1">
-                        <StackPanel Grid.Row="1" Orientation="Horizontal">
-                            <!--<Image Source="Assets/Icons/logo.png" Stretch="Fill" Height="55" Width="55" VerticalAlignment="Center" Margin="-20 0 0 20"/>-->
-                            <Label Content="TaxiService" Foreground="#98B0F1" FontWeight="Bold" FontSize="29" VerticalAlignment="Center" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="13 0 0 20"/>
+                    
+                    <!--Border for name of project-->
+                    <Border Grid.Row="0">
+                        <StackPanel Grid.Row="1" 
+                                    Orientation="Horizontal">
+                            <Label Content="TaxiService" 
+                                   Foreground="#98B0F1" 
+                                   FontWeight="Bold" 
+                                   FontSize="29" 
+                                   VerticalAlignment="Center" 
+                                   HorizontalContentAlignment="Left" 
+                                   HorizontalAlignment="Left" 
+                                   Margin="13 0 0 20"/>
                         </StackPanel>
+
+                        <!--Shadow for text-->
                         <Border.Effect>
-                            <DropShadowEffect Color="#6E8FEA" Direction="270" ShadowDepth="0.4" BlurRadius="2"/>
+                            <DropShadowEffect Color="#6E8FEA" 
+                                              Direction="270" 
+                                              ShadowDepth="0.4" 
+                                              BlurRadius="2"/>
                         </Border.Effect>
                     </Border>
-
-                    <StackPanel Grid.Row="2">
-                        <RadioButton x:Name="rdRecords" Content="Home" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource home}" Margin="0 15 0 0" Click="rdRecords_Click" />
-                        <RadioButton x:Name="rdAddition" Content="New order" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource users}" Margin="0 5 0 0" Click="rdAddition_Click"/>
-                        
-                        <Separator Margin="10 10 10 10" Background="{DynamicResource DarkerBackgroundColor}">
-                            <Separator.Effect>
-                                <BlurEffect Radius="2"/>
-                            </Separator.Effect>
-                        </Separator>
-
-                        <RadioButton x:Name="rdRegisterAsCrewMan" Content="Career" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource analytics}" Margin="0 5 0 0"/>
-                        <RadioButton x:Name="rdSupport" Content="Support" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource notifications}" Margin="0 5 0 0"/>
-                        <RadioButton x:Name="rdPromotion" Content="Promotions" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource collections}" Margin="0 5 0 0"/>
-                    </StackPanel>
-
-                    <!--<Border Grid.Row="2"
-                            Margin="15 0 16 0"
-                            CornerRadius="15"
-                            Background="{DynamicResource SecundaryBlueColor}"
-                            Width="160"
-                            Height="165">
-                        <Border.BitmapEffect>
-                            <DropShadowBitmapEffect
-                                            ShadowDepth="1"
-                                            Direction="0"
-                                            Color="#5B8DEF"
-                                            Softness="0.6"/>
-                        </Border.BitmapEffect>
-                        <Grid Margin="0 10 0 5">
-                            <Label Content="Scan me!" FontWeight="SemiBold" FontSize="17" Foreground="{DynamicResource TertiaryWhiteColor}" Margin="42 -11 0 0" Grid.ColumnSpan="2"/>
-                            <Image Source="/Assets/Icons/qrCod.png" Stretch="Fill"  Height="130" Width="140" VerticalAlignment="Top" Margin="5,15,5,0" Grid.ColumnSpan="2"/>
-                        </Grid>
-                    </Border>-->
-
-                    <Border Grid.Row="4">
-                        <Label Content="@Created by Lukianov Nazar" FontWeight="SemiBold" FontSize="11" Foreground="{DynamicResource TextLightThemeColor}" Margin="25 1 0 0"/>
+                    
+                    <!--Label in left menu bottom-->
+                    <Border Grid.Row="1">
+                        <Label Content="@Created by Lukianov Nazar" 
+                               FontWeight="SemiBold" 
+                               FontSize="11" 
+                               Foreground="{DynamicResource TextLightThemeColor}" 
+                               Margin="21 1 0 0"
+                               VerticalAlignment="Bottom"/>
                     </Border>
                 </Grid>
             </Border>
-            <!--<Grid Grid.Column="1" Grid.Row="0">
-               
-
-                <StackPanel Grid.Row="0" Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="150 7 12 0" Height="20" Orientation="Horizontal" FlowDirection="RightToLeft">
-                    <Button x:Name="btnClose" Style="{StaticResource IconButtonsStyle}" Content="{DynamicResource close}" Click="btnClose_Click" Tag="IsCloseButton"/>
-                    
-                    <Button x:Name="btnRestore" Margin="8 0" Click="btnRestore_Click">
-                        <Button.Style>
-                            <Style TargetType="{x:Type Button}" BasedOn="{StaticResource IconButtonsStyle}">
-                                <Setter Property="Content" Value="{DynamicResource maximize}"/>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ElementName=home, Path=WindowState}" Value="Maximized">
-                                        <Setter Property="Content" Value="{DynamicResource restore}"/>
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                    </Button>
-                    <Button x:Name="btnMinimize" Style="{DynamicResource IconButtonsStyle}" Content="{DynamicResource minimize}" Click="btnMinimize_Click"/>
-                </StackPanel>
-            </Grid>-->
+            
+            <!--Border for frame and part of main window-->
             <Border Grid.Column="1">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="80"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <!-- Start: Frame Container -->
-                    <Border Grid.Row="1" CornerRadius="0 0 5 0" Background="Transparent">
-                        <Frame x:Name="frameContent" NavigationUIVisibility="Hidden"/>
+                    
+                    <!--Frame container-->
+                    <Border Grid.Row="1" 
+                            CornerRadius="0 0 5 0" 
+                            Background="Transparent">
+                        <Frame x:Name="frameContent"
+                               NavigationUIVisibility="Hidden"/>
                     </Border>
-                    <!-- End: Frame Container -->
                 </Grid>
             </Border>
 
-
-            <Border Grid.Column="1" >
+            <!--Settings button-->
+            <!--<Border Grid.Column="1" >
                 <Border.Effect>
-                    <DropShadowEffect Color="#93B0EF" Direction="270" ShadowDepth="0.5" BlurRadius="6"/>
+                    <DropShadowEffect Color="#93B0EF" 
+                                      Direction="270" 
+                                      ShadowDepth="0.5" 
+                                      BlurRadius="6"/>
                 </Border.Effect>
-                <Button Style="{StaticResource topButton}" Background="#C1D4FB" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 25 30 0">
+                <Button Style="{StaticResource topButton}" 
+                        Background="#C1D4FB" 
+                        HorizontalAlignment="Right" 
+                        VerticalAlignment="Top" 
+                        Margin="0 25 30 0">
                     <Icon:PackIconMaterial Kind="Cog"/>
                 </Button>
-            </Border>
-
-            <Border Grid.Column="1" >
+            </Border>-->
+            
+            <!--Information button-->
+            <!--<Border Grid.Column="1" >
                 <Border.Effect>
-                    <DropShadowEffect Color="#93B0EF" Direction="270" ShadowDepth="0.5" BlurRadius="6"/>
+                    <DropShadowEffect Color="#93B0EF" 
+                                      Direction="270" 
+                                      ShadowDepth="0.5" 
+                                      BlurRadius="6"/>
                 </Border.Effect>
-                <Button Style="{StaticResource topButton}" Background="#C1D4FB" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 25 75 0">
+                <Button Style="{StaticResource topButton}" 
+                        Background="#C1D4FB" 
+                        HorizontalAlignment="Right" 
+                        VerticalAlignment="Top" 
+                        Margin="0 25 75 0">
                     <Icon:PackIconMaterial Kind="Information"/>
                 </Button>
-            </Border>
+            </Border>-->
+            
         </Grid>
     </Border>
 </Window>

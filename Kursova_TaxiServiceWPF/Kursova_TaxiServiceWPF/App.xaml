@@ -2,12 +2,13 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Kursova_TaxiServiceWPF"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
+            <sys:String x:Key="LogFileName">logFile.txt</sys:String>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles/StyleOfButton.xaml"/>
-                <ResourceDictionary Source="Styles/RadioButton.xaml"/>
                 <ResourceDictionary Source="Themes/LightTheme.xaml"/>
                 <ResourceDictionary Source="Assets/Icons/Icons.xaml"/>
                 <ResourceDictionary Source="DataGridStyles/RowStyle.xaml"/>
@@ -15,7 +16,7 @@
                 <ResourceDictionary Source="DataGridStyles/CellStyle.xaml"/>
                 <ResourceDictionary Source="DataGridStyles/DataGridStyle.xaml"/>
                 <ResourceDictionary Source="Styles/ComboBox.xaml"/>
-                
+                <ResourceDictionary Source="Styles/StylesOfTextBoxes.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

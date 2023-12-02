@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Text.RegularExpressions;
 
 namespace Kursova_TaxiServiceWPF.Classes
 {
@@ -39,6 +40,7 @@ namespace Kursova_TaxiServiceWPF.Classes
                 strDriverSurname = value;
             }
         }
+
         //Kilometr's price + setter and getter
         private double dPricePerKm;
         public double PricePerKm
@@ -106,10 +108,8 @@ namespace Kursova_TaxiServiceWPF.Classes
         }
         #endregion
 
-        public ObservableCollection<string> Details { get; set; }
-        public bool Is;
-
         #region constructors
+
         //default constructor with zero values
         public Taxi() {
             Id = 0;
@@ -151,6 +151,48 @@ namespace Kursova_TaxiServiceWPF.Classes
         #region functionality
         public System.Double GetPriceOfAllDistance() {
             return PricePerKm * Distance;
+        }
+        
+        public void WriteInFile(string fileName) {
+            using (StreamWriter writer = new StreamWriter(fileName, true)) {
+                string content = "------------------\n" + 
+                    "Id -" + Id + '\n' +
+                    "Surname -" + Surname + '\n' +
+                    "Price perkilometre -" + PricePerKm.ToString() + '\n' +
+                    "Car cost -" + CarCost.ToString() + '\n' +
+                    "Car model -" + CarModel + '\n' +
+                    "Arrival time -" + ArrivalTime.ToString() + '\n' +
+                    "Distance -" + Distance.ToString() + '\n' +
+                    "Price for all journey -" + GetPriceOfAllDistance() + '\n';
+                writer.Write(content);
+            }
+        }
+
+        private void PutInfoInVariables(string[] linesFromFile) {
+            Id = Convert.ToInt32((linesFromFile[1].Split('-'))[1].Trim());
+            Surname = (linesFromFile[2].Split('-'))[1].Trim();
+            PricePerKm = Convert.ToDouble((linesFromFile[3].Split('-'))[1].Trim());
+            CarCost = Convert.ToDouble((linesFromFile[4].Split('-'))[1].Trim());
+            CarModel = (linesFromFile[5].Split('-'))[1].Trim();
+            ArrivalTime = DateTime.Parse((linesFromFile[6].Split('-'))[1]);
+            Distance = Convert.ToDouble((linesFromFile[7].Split('-'))[1].Trim());
+        }
+
+        public bool ReadFromFile(string fileName , System.Int32 startLine, System.Int32 endLine) {
+            using (StreamReader reader = new StreamReader(fileName)) {
+                string[] linesFromFile = new string[endLine - startLine];
+                System.Int32 currentLine = 0, indexForLines = 0;
+                while (currentLine < endLine && !reader.EndOfStream) {
+                    string content = reader.ReadLine();
+                    if (currentLine >= startLine) {
+                        linesFromFile[indexForLines] = content;
+                        indexForLines++;
+                    }
+                    currentLine++;
+                }
+                PutInfoInVariables(linesFromFile);
+                return reader.EndOfStream;
+            }
         }
         #endregion
     }
