@@ -10,7 +10,7 @@
         Title="MainWindow" Height="720" Width="1080"
         WindowStartupLocation="CenterScreen" WindowStyle="None"
         Background="Transparent" AllowsTransparency="True"
-        ResizeMode="NoResize" WindowState="Normal" FontFamily="Poppins">
+        ResizeMode="NoResize" WindowState="Normal" FontFamily="Poppins" AllowDrop="True">
 
     <Border x:Name="mainBorder" 
             Background="{DynamicResource BackgroundColorForMainPart}"
@@ -21,8 +21,35 @@
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            
-            <!--Birder for left menu-->
+
+            <!--Button Close | Minimize-->
+            <StackPanel Grid.Row="0" 
+                        Grid.Column="0" 
+                        HorizontalAlignment="Left" 
+                        VerticalAlignment="Top"
+                        Margin="20 5 10 0"
+                        Height="30" 
+                        Orientation="Horizontal" 
+                        FlowDirection="RightToLeft">
+                <StackPanel.Effect>
+                    <Effects:DropShadowEffect Color="#183462"
+                                              Direction="270" 
+                                              ShadowDepth="0.4" 
+                                              BlurRadius="1"/>
+                </StackPanel.Effect>
+                <Button x:Name="btnMinimize"
+                        Margin="0 0 10 0"
+                        Style="{DynamicResource IconButtonsStyle}" 
+                        Content="{DynamicResource minimize}"
+                        Click="btnMinimize_Click"/>
+                <Button x:Name="btnClose" 
+                        Style="{StaticResource IconButtonsStyle}" 
+                        Content="{DynamicResource close}"
+                        Click="btnClose_Click" 
+                        Tag="IsCloseButton"/>
+            </StackPanel>
+
+            <!--Border for left menu-->
             <Border CornerRadius="0 70 0 20"
                     Background="{DynamicResource LightBlueForLeftMenu}"
                     Margin="0 80 0 0">

@@ -15,7 +15,6 @@ namespace Kursova_TaxiServiceWPF.Pages {
 
     public partial class Orders : Page
     {
-
         private ArrayOfTaxi controllerOfTaxis;
         private ObservableCollection<Taxi> observableCollectionOfTaxis;
         private System.Int32 iSelectedPage, iNumberOfPages, iNumbersOfElements, iNumberOfVariables;
@@ -28,6 +27,7 @@ namespace Kursova_TaxiServiceWPF.Pages {
         };
         private Point startPoint;
 
+        // Contructor for page
         public Orders()
         {
             InitializeComponent();
@@ -35,7 +35,7 @@ namespace Kursova_TaxiServiceWPF.Pages {
             observableCollectionOfTaxis = new ObservableCollection<Taxi>();
 
             iSelectedPage = 0;
-            iNumberOfVariables = 9;
+            iNumberOfVariables = 8;
             iNumbersOfElements = 0;
             iNumberOfPages = controllerOfTaxis.GetCount() / 12;
             NumberOfElements_ComboBox.SelectedIndex = 0;
@@ -70,17 +70,57 @@ namespace Kursova_TaxiServiceWPF.Pages {
         }
 
 
+        
+        // Sorting taxis form controller by quickSort and display in dataGrid
+        private void QuickSortTaxisByPriceOfTrip() {
+            try {
+                if (controllerOfTaxis.QuickSortByPrice()) {
+                    WriteInLog(Enums.Enums.Operations.FunctionOperation.ToString() +
+                   " | Succesfully sorting by price of trip");
+                    PutTaxisInCollection();
+                    DisplayChanges();
+                    MessageBox.Show("Succesfully sorting by price of trip",
+                    "Sorting taxis",
+                     MessageBoxButton.OK,
+                     MessageBoxImage.Information);
+                    return;
+                }
+                WriteInLog(Enums.Enums.Operations.FunctionOperation.ToString() +
+                   " | Theare are not taxis for sorting");
+                MessageBox.Show("Theare are not taxis for sorting!",
+                 "Empty dataGrid",
+                  MessageBoxButton.OK,
+                  MessageBoxImage.Error);
+            }
+            catch (Exception exception) {
+                WriteInLog(Enums.Enums.Operations.DataGridOperation.ToString() +
+                       " | Not succesfully sorting. Details - " +
+                       exception.Message.ToString());
+                MessageBox.Show("Something went wrong. Details - " + exception.Message.ToString(),
+                        "Unexpected error",
+                         MessageBoxButton.OK,
+                         MessageBoxImage.Error);
+            }
+        }
+
+
 
         // Identifying and adding the most expensive car with the lowest trip price
-        private void DetectMostExpensiveWithMinimalPriceOFTrip() {
-            List<Taxi> minimalPriceOfTrip = controllerOfTaxis.GetMostExpensiveWithMinimalArrivalTime();
+        private void DetectMostExpensiveWithMinimalPriceOfTrip() {
+            List<Taxi> minimalPriceOfTrip = controllerOfTaxis.GetMostExpensiveWithMinimalPriceOfTrip();
             if (minimalPriceOfTrip.Count > 0) {
                 observableCollectionOfTaxis.Clear();
                 for (int i = 0; i < minimalPriceOfTrip.Count; i++)
                     observableCollectionOfTaxis.Add(minimalPriceOfTrip[i]);
+                WriteInLog(Enums.Enums.Operations.FunctionOperation.ToString() +
+                    " | Succesfully detecting most expensive car with minimal price of trip. Detected - " +
+                    minimalPriceOfTrip.Count);
+                DataGridPaginationUpdate();
                 DisplayChanges();
                 return;
             }
+            WriteInLog(Enums.Enums.Operations.DataGridOperation.ToString() + 
+                " | Not succesfully detecting most expensive car with minimal price of trip. Details - there are not elements with such condition");
             MessageBox.Show("Theare are not cars with such conditions!",
                  "Empty dataGrid",
                   MessageBoxButton.OK,
@@ -96,9 +136,15 @@ namespace Kursova_TaxiServiceWPF.Pages {
                 observableCollectionOfTaxis.Clear();
                 for (int i = 0; i < minimalTimeOfTrip.Count; i++)
                     observableCollectionOfTaxis.Add(minimalTimeOfTrip[i]);
+                WriteInLog(Enums.Enums.Operations.FunctionOperation.ToString() + 
+                    " | Succesfully detecting most expensive car with minimal arrival time. Detected - " +
+                    minimalTimeOfTrip.Count);
+                DataGridPaginationUpdate();
                 DisplayChanges();
                 return;
             }
+            WriteInLog(Enums.Enums.Operations.DataGridOperation.ToString() + 
+                " | Not succesfully detecting most expensive car with minimal arrival time. Details - there are not elements with such condition");
             MessageBox.Show("Theare are not cars with such conditions!",
                  "Empty dataGrid",
                   MessageBoxButton.OK,
@@ -109,27 +155,24 @@ namespace Kursova_TaxiServiceWPF.Pages {
 
         // Determining the car with the shortest arrival time using the method from the ArrayOfTAxi class
         private void PrintTaxisWithMinimalArrivalTime() {
-            try {
-                List<Taxi> taxisWithMinimalArrivalTime = controllerOfTaxis.GetMinimalArrivalTime();
-                if (taxisWithMinimalArrivalTime != null) {
-                    observableCollectionOfTaxis.Clear();
-                    for (int i = 0; i < taxisWithMinimalArrivalTime.Count; i++)
-                        observableCollectionOfTaxis.Add(taxisWithMinimalArrivalTime[0]);
-                    DataGridPaginationUpdate();
-                    DisplayChanges();
-                    return;
-                }
-                MessageBox.Show("There are not elements in dataGrid!", 
-                  "Empty dataGrid",
-                   MessageBoxButton.OK,
-                   MessageBoxImage.Information);
+            List<Taxi> taxisWithMinimalArrivalTime = controllerOfTaxis.GetMinimalArrivalTime();
+            if (taxisWithMinimalArrivalTime != null) {
+                observableCollectionOfTaxis.Clear();
+                for (int i = 0; i < taxisWithMinimalArrivalTime.Count; i++)
+                    observableCollectionOfTaxis.Add(taxisWithMinimalArrivalTime[0]);
+                WriteInLog(Enums.Enums.Operations.FunctionOperation.ToString() + 
+                    " | Succesfully serached and showed car with minimal arrival time. Detected - " 
+                    + taxisWithMinimalArrivalTime.Count);
+                DataGridPaginationUpdate();
+                DisplayChanges();
+                return;
             }
-            catch (Exception exception) {
-                MessageBox.Show("Something went wrong! Details - " + exception.Message.ToString(),
-                   "UnHandled error",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Error);
-            }
+            WriteInLog(Enums.Enums.Operations.DataGridOperation.ToString() + 
+                " | Not succesfully detecting with minimal arrival time. Details - there are not elements with such condition");
+            MessageBox.Show("There are not elements in dataGrid!",
+              "Empty dataGrid",
+               MessageBoxButton.OK,
+               MessageBoxImage.Information);
         }
 
 
@@ -142,26 +185,42 @@ namespace Kursova_TaxiServiceWPF.Pages {
 
         // Output of information about the car with the corresponding number
         private void SumbitIdPopUp_Click(object sender, RoutedEventArgs e) {
-            if (IdSearch.IsCorrect) {
-                Taxi searchedTaxi = controllerOfTaxis.PeekById(Convert.ToInt32(IdSearch.inputTextBox.Text));
-                if (searchedTaxi != null) {
-                    MessageBox.Show("The information about car with id " + searchedTaxi.Id +
-                        ":\nSurname - " + searchedTaxi.Surname +
-                        "\nModel of car - " + searchedTaxi.CarModel +
-                        "\nPrice of all journey - " + searchedTaxi.GetPriceOfAllDistance(),
-                    "Finding car with ID",
-                     MessageBoxButton.OK,
-                     MessageBoxImage.Information);
-                    IdSearchPopUp.IsOpen = false;
-                    mainBorder.Effect = new BlurEffect { Radius = 0 };
-                    return;
+            try {
+                if (IdSearch.IsCorrect) {
+                    Taxi searchedTaxi = controllerOfTaxis.PeekById(Convert.ToInt32(IdSearch.inputTextBox.Text));
+                    if (searchedTaxi != null) {
+                        WriteInLog(Enums.Enums.Operations.FunctionOperation.ToString() +
+                                " | Succesfully serached and showed car with such id");
+                        MessageBox.Show("The information about car with id " + searchedTaxi.Id +
+                            ":\nSurname - " + searchedTaxi.Surname +
+                            "\nModel of car - " + searchedTaxi.CarModel +
+                            "\nPrice of all journey - " + searchedTaxi.GetPriceOfAllDistance(),
+                        "Finding car with ID",
+                         MessageBoxButton.OK,
+                         MessageBoxImage.Information);
+                        IdSearchPopUp.IsOpen = false;
+                        mainBorder.Effect = new BlurEffect { Radius = 0 };
+                        return;
+                    }
+                    WriteInLog(Enums.Enums.Operations.DataGridOperation.ToString() +
+                        " | Not succesfully detecting car with such id. Details - there are not elements with such condition");
+                    MessageBox.Show("The information about car with id " + Convert.ToInt32(IdSearch.inputTextBox.Text) +
+                            ": does not exist with such id",
+                        "Failed finding car with ID",
+                         MessageBoxButton.OK,
+                         MessageBoxImage.Information);
                 }
-                MessageBox.Show("The information about car with id " + Convert.ToInt32(IdSearch.inputTextBox.Text) +
-                        ": does not exist with such id",
-                    "Failed finding car with ID",
-                     MessageBoxButton.OK,
-                     MessageBoxImage.Information);
             }
+            catch (Exception exception) {
+                WriteInLog(Enums.Enums.Operations.DataGridOperation.ToString() +
+                        " | Not succesfully detecting car with such id. Details - " + 
+                        exception.Message.ToString());
+                MessageBox.Show("Something went wrong. Details - " + exception.Message.ToString() ,
+                        "Unexpected error",
+                         MessageBoxButton.OK,
+                         MessageBoxImage.Error);
+            }
+            
         }
 
         // Closing the PopUp and turning off the blur effect
@@ -174,33 +233,98 @@ namespace Kursova_TaxiServiceWPF.Pages {
 
         // Group by Price and ArrivalTime, using method Of ArrayOfTaxi
         private void GroupByPriceAndArivalTime() {
-            Dictionary<string, List<Taxi>> groupsDictionary = controllerOfTaxis.GroupByPriceAndArivalTime();
-            observableCollectionOfTaxis.Clear();
-            foreach (var group in groupsDictionary)
-                for (int i = 0; i < group.Value.Count; i++)
-                    observableCollectionOfTaxis.Add(group.Value[i]);
-            DisplayChanges();
+            try {
+                Dictionary<string, List<Taxi>> groupOfPriceAndArrivalTime = controllerOfTaxis.GroupByPriceAndArivalTime();
+                if (groupOfPriceAndArrivalTime.Count != 0 ) {
+                    observableCollectionOfTaxis.Clear();
+                    foreach (var group in groupOfPriceAndArrivalTime)
+                        for (int i = 0; i < group.Value.Count; i++)
+                            observableCollectionOfTaxis.Add(group.Value[i]);
+                    WriteInLog(Enums.Enums.Operations.FunctionOperation.ToString() +
+                        " | Succesfully group taxis by price and arrival time. Count of groups - " +
+                        groupOfPriceAndArrivalTime.Count);
+                    DisplayChanges();
+                    MessageBox.Show("The taxis have been grouped succesfully!",
+                        "Grouping car",
+                         MessageBoxButton.OK,
+                         MessageBoxImage.Information);
+                    return;
+                }
+                WriteInLog(Enums.Enums.Operations.FunctionOperation.ToString() +
+                       " | Not Succesfully group taxis by price and arrival time. Details - there are not taxis in datGrid");
+                MessageBox.Show("The taxis have not been grouped! Details - there are not elements..",
+                        "Grouping car",
+                         MessageBoxButton.OK,
+                         MessageBoxImage.Information);
+            }
+            catch (Exception exception) {
+                WriteInLog(Enums.Enums.Operations.FunctionOperation.ToString() +
+                       " | Not Succesfully group taxis by price and arrival time. Details - " 
+                       + exception.Message.ToString());
+                MessageBox.Show("Unexpected error! Details - " 
+                        + exception.Message.ToString(),
+                        "Grouping car",
+                         MessageBoxButton.OK,
+                         MessageBoxImage.Error);
+            }
         }
 
 
 
         // Group by models, using method Of ArrayOfTaxi
         private void GroupByModel() {
-            Dictionary<string, List<Taxi>> groupElements = controllerOfTaxis.GroupByModel();
-            observableCollectionOfTaxis.Clear();
-            foreach (var group in groupElements)
-                for (int i = 0; i < group.Value.Count; i++)
-                    observableCollectionOfTaxis.Add(group.Value[i]);
-            DisplayChanges();
+            try {
+                Dictionary<string, List<Taxi>> groupOfModels = controllerOfTaxis.GroupByModel();
+                if (groupOfModels.Count != 0) {
+                    observableCollectionOfTaxis.Clear();
+                    foreach (var group in groupOfModels)
+                        for (int i = 0; i < group.Value.Count; i++)
+                            observableCollectionOfTaxis.Add(group.Value[i]);
+                    WriteInLog(Enums.Enums.Operations.FunctionOperation.ToString() +
+                            " | Succesfully group taxis by model. Count of groups - " +
+                            groupOfModels.Count);
+                    DisplayChanges();
+                    MessageBox.Show("The taxis have been grouped succesfully!",
+                        "Grouping car",
+                         MessageBoxButton.OK,
+                         MessageBoxImage.Information);
+                    return;
+                }
+                WriteInLog(Enums.Enums.Operations.FunctionOperation.ToString() +
+                      " | Not Succesfully group taxis by model. Details - there are not taxis in datGrid");
+                MessageBox.Show("The taxis have not been grouped! Details - there are not elements..",
+                        "Grouping car",
+                         MessageBoxButton.OK,
+                         MessageBoxImage.Information);
+            }
+            catch (Exception exception) {
+                WriteInLog(Enums.Enums.Operations.FunctionOperation.ToString() +
+                       " | Not Succesfully group taxis by model. Details - "
+                       + exception.Message.ToString());
+                MessageBox.Show("Unexpected error! Details - "
+                        + exception.Message.ToString(),
+                        "Grouping car",
+                         MessageBoxButton.OK,
+                         MessageBoxImage.Error);
+            }
         }
 
 
+
+        // Checking if there are elements in datgrid
+        private void checkingIfElementExist () {
+            if (membersOfDataGrid.Items.Count != 0)
+                EmpytNotification.Visibility = Visibility.Hidden;
+            else
+                EmpytNotification.Visibility = Visibility.Visible;
+        }
 
         // Displaying changes in the dataGrid
         private void DisplayChanges() {
             membersOfDataGrid.Items.Clear();
             for (int i = iSelectedPage * iNumbersOfElements; i < (iSelectedPage * iNumbersOfElements) + iNumbersOfElements && i < observableCollectionOfTaxis.Count; i++)
                 membersOfDataGrid.Items.Add(observableCollectionOfTaxis[i]);
+            checkingIfElementExist();
         }
 
         // Transferring the elements of the main array to the ObservableCollection
@@ -223,10 +347,15 @@ namespace Kursova_TaxiServiceWPF.Pages {
             Taxi clickedDataItem = clickedButton?.DataContext as Taxi;
             if (clickedDataItem != null) {
                 controllerOfTaxis.DeleteTaxi(clickedDataItem.Surname);
+                WriteInLog(Enums.Enums.Operations.DataGridOperation.ToString() +
+                      " | Succesfully deleting element from dataFrid");
                 PutTaxisInCollection();
                 DataGridPaginationUpdate();                    
                 DisplayChanges();
+                return;
             }
+            WriteInLog(Enums.Enums.Operations.DataGridOperation.ToString() +
+                      " | Not Succesfully deleting element from dataFrid. Details - null element");
         }
 
         // Button that do actions from the task
@@ -234,9 +363,7 @@ namespace Kursova_TaxiServiceWPF.Pages {
             // We take the selected action from the combo box and run it
             switch (actionComboBox.SelectedIndex) {
                 case 0:
-                    controllerOfTaxis.QuickSortByPrice();
-                    PutTaxisInCollection();
-                    DisplayChanges();
+                    QuickSortTaxisByPriceOfTrip();
                     break;
                 case 1:
                     PrintTaxisWithMinimalArrivalTime();
@@ -248,7 +375,7 @@ namespace Kursova_TaxiServiceWPF.Pages {
                     DetectMostExpensiveWithMinimalArrivalTime();
                     break;
                 case 4:
-                    DetectMostExpensiveWithMinimalPriceOFTrip();
+                    DetectMostExpensiveWithMinimalPriceOfTrip();
                     break;
                 case 5:
                     GroupByPriceAndArivalTime();
@@ -485,6 +612,7 @@ namespace Kursova_TaxiServiceWPF.Pages {
                         ArrivalTime = DateTime.ParseExact(ArrivallTimePopUp.inputTextBox.Text, "yyyy-MM-dd HH:mm:ss", null),
                         Distance = Convert.ToDouble(DistancePopUp.inputTextBox.Text)
                     });
+                    WriteInLog(Enums.Enums.Operations.DataGridOperation.ToString() + " | Succesfully adding a new element to dataGrid");
                     // Updating the page numbers
                     PutTaxisInCollection();
                     DataGridPaginationUpdate();
@@ -492,7 +620,12 @@ namespace Kursova_TaxiServiceWPF.Pages {
                     // Removing background blur
                     inputPopup.IsOpen = false;
                     mainBorder.Effect = new BlurEffect { Radius = 0 };
-                    WriteInLog(Enums.Enums.Operations.DataGridOperation.ToString() + " | Succesfully adding a new element to dataGrid");
+                    SurnamePopUp.inputTextBox.Text = "";
+                    PricePerKmPopUp.inputTextBox.Text = "";
+                    CarPricePopUp.inputTextBox.Text = "";
+                    CarModelPopUp.inputTextBox.Text = "";
+                    ArrivallTimePopUp.inputTextBox.Text = "";
+                    DistancePopUp.inputTextBox.Text = "";
                 }
                 catch (Exception exception) {
                     WriteInLog(Enums.Enums.Operations.DataGridOperation.ToString() + " | Not succesfully adding a new element to dataGrid. Details - " + exception.Message.ToString());
@@ -531,6 +664,20 @@ namespace Kursova_TaxiServiceWPF.Pages {
                 else {
                     userControl.warningTextBox.Text = "";
                     userControl.IsCorrect = userControl.inputTextBox.Text.Length == 0 ? false : true;
+                    if (userControl.Name == "ArrivallTimePopUp") {
+                        if (DateTime.TryParse(userControl.inputTextBox.Text, out DateTime result)) {
+                            if (result < DateTime.Now) {
+                                userControl.warningTextBox.Text = "*incorrect input";
+                                userControl.IsCorrect = false;
+                                return;
+                            }
+                            userControl.warningTextBox.Text = "";
+                            userControl.IsCorrect = true;
+                            return;
+                        }
+                        userControl.warningTextBox.Text = "*incorrect input";
+                        userControl.IsCorrect = false;
+                    }
                 }
             }
         }

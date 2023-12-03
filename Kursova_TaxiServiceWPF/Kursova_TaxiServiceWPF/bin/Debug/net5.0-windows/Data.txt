@@ -1,0 +1,208 @@
+------------------
+Surname-Samoilich
+Price per kilometre-2,5
+Car cost-500
+Car model-Toyota Corolla
+Arrival time-02.12.2023 08:30:00
+Distance-10
+Price for all journey-25
+------------------
+Surname-Melnyk
+Price per kilometre-1,8
+Car cost-400
+Car model-Honda Civic
+Arrival time-02.12.2023 12:15:00
+Distance-15
+Price for all journey-27
+------------------
+Surname-Kuznetsov
+Price per kilometre-3
+Car cost-600
+Car model-Ford Mustang
+Arrival time-02.12.2023 15:45:00
+Distance-8
+Price for all journey-24
+------------------
+Surname-Melnyk
+Price per kilometre-2,2
+Car cost-450
+Car model-Nissan Altima
+Arrival time-02.12.2023 19:00:00
+Distance-12
+Price for all journey-26,4
+------------------
+Surname-Vashchyk
+Price per kilometre-2,7
+Car cost-550
+Car model-Chevrolet Malibu
+Arrival time-03.12.2023 02:00:00
+Distance-20
+Price for all journey-54
+------------------
+Surname-Romanova
+Price per kilometre-2,1
+Car cost-420
+Car model-Hyundai Sonata
+Arrival time-03.12.2023 07:30:00
+Distance-18
+Price for all journey-37,8
+------------------
+Surname-Mohta
+Price per kilometre-2,8
+Car cost-580
+Car model-BMW 3 Series
+Arrival time-03.12.2023 11:45:00
+Distance-14
+Price for all journey-39,2
+------------------
+Surname-Sydorenko
+Price per kilometre-2,4
+Car cost-480
+Car model-Mercedes-Benz C-Class
+Arrival time-03.12.2023 16:15:00
+Distance-25
+Price for all journey-60
+------------------
+Surname-Yefremov
+Price per kilometre-2
+Car cost-350
+Car model-Volkswagen Passat
+Arrival time-03.12.2023 20:30:00
+Distance-10
+Price for all journey-20
+------------------
+Surname-Ponomarenko
+Price per kilometre-2,3
+Car cost-470
+Car model-Audi A4
+Arrival time-04.12.2023 03:00:00
+Distance-30
+Price for all journey-69
+------------------
+Surname-Kovalenko
+Price per kilometre-2,6
+Car cost-520
+Car model-Lexus ES
+Arrival time-04.12.2023 08:45:00
+Distance-22
+Price for all journey-57,2
+------------------
+Surname-Illyashuk
+Price per kilometre-2,2
+Car cost-440
+Car model-Subaru Legacy
+Arrival time-04.12.2023 12:00:00
+Distance-15
+Price for all journey-33
+------------------
+Surname-Ivanova
+Price per kilometre-2,9
+Car cost-600
+Car model-Kia Optima
+Arrival time-04.12.2023 15:30:00
+Distance-18
+Price for all journey-52,2
+------------------
+Surname-Popov
+Price per kilometre-2,5
+Car cost-500
+Car model-Jaguar XE
+Arrival time-04.12.2023 19:45:00
+Distance-12
+Price for all journey-30
+------------------
+Surname-Tkachenko
+Price per kilometre-2,7
+Car cost-550
+Car model-Porsche 911
+Arrival time-05.12.2023 00:15:00
+Distance-20
+Price for all journey-54
+------------------
+Surname-Bondarenko
+Price per kilometre-2,1
+Car cost-420
+Car model-Tesla Model 3
+Arrival time-05.12.2023 05:30:00
+Distance-25
+Price for all journey-52,5
+------------------
+Surname-Kozlov
+Price per kilometre-2,8
+Car cost-580
+Car model-Fiat 500
+Arrival time-05.12.2023 09:45:00
+Distance-14
+Price for all journey-39,2
+------------------
+Surname-Fedorov
+Price per kilometre-2,4
+Car cost-480
+Car model-Mini Cooper
+Arrival time-05.12.2023 14:00:00
+Distance-22
+Price for all journey-52,8
+------------------
+Surname-Antonov
+Price per kilometre-2
+Car cost-350
+Car model-Smart Fortwo
+Arrival time-05.12.2023 18:15:00
+Distance-10
+Price for all journey-20
+------------------
+Surname-Lehenkyi
+Price per kilometre-2,3
+Car cost-470
+Car model-Volvo S60
+Arrival time-06.12.2023 01:00:00
+Distance-30
+Price for all journey-69
+------------------
+Surname-Kravchenko
+Price per kilometre-2,6
+Car cost-520
+Car model-Mazda 6
+Arrival time-06.12.2023 06:45:00
+Distance-18
+Price for all journey-46,8
+------------------
+Surname-Bodnar
+Price per kilometre-2,2
+Car cost-440
+Car model-Acura TLX
+Arrival time-06.12.2023 11:00:00
+Distance-15
+Price for all journey-33
+------------------
+Surname-Yaroshovych
+Price per kilometre-2,9
+Car cost-600
+Car model-Infiniti Q50
+Arrival time-06.12.2023 15:30:00
+Distance-18
+Price for all journey-52,2
+------------------
+Surname-Franchuk
+Price per kilometre-2,5
+Car cost-500
+Car model-Cadillac ATS
+Arrival time-06.12.2023 19:45:00
+Distance-12
+Price for all journey-30
+------------------
+Surname-Mykolenko
+Price per kilometre-2
+Car cost-500
+Car model-Cadillac ATS
+Arrival time-06.12.2023 19:45:00
+Distance-12
+Price for all journey-24
+------------------
+Surname-Matvienko
+Price per kilometre-1
+Car cost-900
+Car model-Cadillac ATS
+Arrival time-06.12.2023 19:45:00
+Distance-5
+Price for all journey-5

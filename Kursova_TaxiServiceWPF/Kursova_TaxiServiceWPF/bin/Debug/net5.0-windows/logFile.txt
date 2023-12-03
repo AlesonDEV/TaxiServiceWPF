@@ -1,1 +1,1 @@
-02.12.2023 23:44:05 FileOperation | The information was succesful read from file Nazar.txt
+03.12.2023 14:26:34 FileOperation | The information was succesful read from file Data.txt

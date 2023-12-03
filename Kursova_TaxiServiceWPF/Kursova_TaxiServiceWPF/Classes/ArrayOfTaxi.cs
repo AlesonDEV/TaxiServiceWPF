@@ -13,6 +13,7 @@ namespace Kursova_TaxiServiceWPF.Classes
         private Taxi[] taxisArray;
         private System.Int32 iArraySize, iArrayCapacity;
 
+        // Default constructor
         public ArrayOfTaxi() {
             taxisArray = null;
             iArrayCapacity = 0;
@@ -21,6 +22,7 @@ namespace Kursova_TaxiServiceWPF.Classes
         #endregion
 
         #region auxiliary private functions
+        // Checking if current array is full
         private System.Boolean IsFull() {
             if (iArrayCapacity >= iArraySize)
                 return true;
@@ -82,6 +84,7 @@ namespace Kursova_TaxiServiceWPF.Classes
             }
         }
 
+        // Seraching the taxi with minimal price of trip
         private Taxi GetTaxiWithMinimalPrice() {
             Taxi minimalValue = null;
             if (taxisArray != null) {
@@ -100,8 +103,12 @@ namespace Kursova_TaxiServiceWPF.Classes
         /// 1. Quick algorithm to sort records by Route Cost.
         /// </summary>
         /// <returns></returns>
-        public void QuickSortByPrice() {
-            QuickSortRecursion(taxisArray, 0, iArrayCapacity - 1);
+        public bool QuickSortByPrice() {
+            if (iArrayCapacity != 0) {
+                QuickSortRecursion(taxisArray, 0, iArrayCapacity - 1);
+                return true;
+            }
+            return false;
         }
 
         /// <summary>
@@ -150,21 +157,22 @@ namespace Kursova_TaxiServiceWPF.Classes
                 if (iArrayCapacity > 1) {
                     Taxi minimalPrice = GetTaxiWithMinimalPrice();
                     for (System.Int32 i = 0; i < iArrayCapacity; i++) {
-                        if (taxisArray[i].GetPriceOfAllDistance() == minimalPrice.GetPriceOfAllDistance() && mostExpensive.Count > 0) {
+                        if (Math.Abs(taxisArray[i].GetPriceOfAllDistance() - minimalPrice.GetPriceOfAllDistance()) < 1e-5 && mostExpensive.Count > 0) {
                             if (taxisArray[i].CarCost > mostExpensive[0].CarCost) {
                                 mostExpensive.Clear();
                                 mostExpensive.Add(taxisArray[i]);
                             }
-                            else if (taxisArray[i].CarCost == mostExpensive[0].CarCost)
+                            else if (Math.Abs(taxisArray[i].CarCost - mostExpensive[0].CarCost) < 1e-5)
                                 mostExpensive.Add(taxisArray[i]);
                         }
-                        else
+                        else if (taxisArray[i].GetPriceOfAllDistance() == minimalPrice.GetPriceOfAllDistance())
                             mostExpensive.Add(taxisArray[i]);
                     }
+                    return mostExpensive;
                 }
                 mostExpensive.Add(taxisArray[0]);
             }
-            return mostExpensive;
+            return mostExpensive;   
         }
 
         /// <summary>

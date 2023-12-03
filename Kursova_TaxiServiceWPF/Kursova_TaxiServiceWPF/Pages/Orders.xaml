@@ -26,6 +26,15 @@
             </Grid.RowDefinitions>
             
             <!--Main dataGrid-->
+            <Border Grid.Row="1">
+                <TextBlock x:Name="EmpytNotification"
+                           Text="Oh, there are not elements in datagrid..." 
+                           VerticalAlignment="Center"
+                           Visibility="Visible"
+                           Foreground="{DynamicResource TextLightThemeColor}"
+                           FontSize="18"
+                           HorizontalAlignment="Center"/>
+            </Border>
             <DataGrid Style="{DynamicResource DataGridStyle1}" 
                       CellStyle="{DynamicResource DataGridCellStyle1}" 
                       ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" 
